@@ -4,6 +4,7 @@ import { css, cx } from 'emotion';
 import { LoremIpsum } from 'lorem-ipsum';
 
 import Text from './Text';
+import BlackBox from './BlackBox';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -39,29 +40,10 @@ export default () => {
   return (
     <section className={grid}>
       <div className={container}>
-        <Text size={64} leading={3} measure={18} flow={8}>
-          {lorem.generateSentences(1).toUpperCase()}
-        </Text>
-
-        <Text size={22} leading={3} flow={0} measure={60} flow={8}>
-          {lorem.generateParagraphs(2)}
-        </Text>
-
+        <Text>{lorem.generateSentences(1).toUpperCase()}</Text>
+        <Text>{lorem.generateParagraphs(2)}</Text>
         <div>
-          <div
-            className={css`
-              height: 64px;
-              min-width: 180px;
-              background-color: black;
-              color: white;
-              display: inline-flex;
-              align-items: center;
-              justify-content: center;
-              padding: 0 16px 0 16px;
-            `}
-          >
-            <Text size={16}>{lorem.generateWords(1).toUpperCase()}</Text>
-          </div>
+          <BlackBox />
         </div>
       </div>
     </section>

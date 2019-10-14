@@ -10,9 +10,9 @@ const calculateTypeOffset = correctionRatio => fontSize => lh => {
 };
 
 export default ({
-  fontSize = 24,
+  fontSize = 16,
   measure = 75,
-  leading = 2,
+  leading = 0,
   flow = 0
 } = {}) => {
   // calculate actual size
