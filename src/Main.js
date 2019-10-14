@@ -30,48 +30,38 @@ let grid = css`
 `;
 
 let container = css`
+  display: flex;
+  flex-direction: column;
   margin: 0 auto;
-  max-width: 120vmin;
 `;
 
 export default () => {
   return (
     <section className={grid}>
       <div className={container}>
-        <div
-          className={css`
-            margin-bottom: 32px;
-          `}
-        >
-          <Text size={1} lineGap={1.4}>
-            {lorem.generateParagraphs(1)}
-          </Text>
-        </div>
-        <div
-          className={css`
-            margin-bottom: 32px;
-          `}
-        >
-          <Text size={2} lineGap={1.5}>
-            {lorem.generateParagraphs(2)}
-          </Text>
-        </div>
+        <Text size={64} leading={3} measure={18} flow={8}>
+          {lorem.generateSentences(1).toUpperCase()}
+        </Text>
 
-        <div
-          className={css`
-            height: 48px;
-            min-width: 120px;
-            background-color: black;
-            color: white;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 16px 0 16px;
-          `}
-        >
-          <Text size={3} lineGap={1}>
-            P{lorem.generateWords(1)}
-          </Text>
+        <Text size={22} leading={3} flow={0} measure={60} flow={8}>
+          {lorem.generateParagraphs(2)}
+        </Text>
+
+        <div>
+          <div
+            className={css`
+              height: 64px;
+              min-width: 180px;
+              background-color: black;
+              color: white;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              padding: 0 16px 0 16px;
+            `}
+          >
+            <Text size={16}>{lorem.generateWords(1).toUpperCase()}</Text>
+          </div>
         </div>
       </div>
     </section>

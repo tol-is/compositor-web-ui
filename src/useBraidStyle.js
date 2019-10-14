@@ -1,35 +1,59 @@
 import { css } from 'emotion';
 
 const gridHeight = 8;
+const correctionRatio = 0.12;
+const capHeight = 0.68;
 
-export default ({ typeSize = 24, lineGap = 1.5 } = {}) => {
-  const fontSize = typeSize;
+const calculateTypeOffset = correctionRatio => fontSize => lh => {
+  const lhRatio = lh / fontSize;
+  return (lhRatio - 1) / 2 + correctionRatio;
+};
 
-  const correctionRatio = 0.12;
-  const capHeight = 0.68;
+export default ({
+  fontSize = 24,
+  measure = 75,
+  leading = 2,
+  flow = 0
+} = {}) => {
+  // calculate actual size
+  const actualSize = capHeight * fontSize;
 
-  const calculateTypeOffset = lh => {
-    const lineHeightScale = lh / fontSize;
-    return (lineHeightScale - 1) / 2 + correctionRatio;
-  };
+  // type in grid lines
+  const typeGridHeight = Math.floor(actualSize / gridHeight) * gridHeight;
 
-  const lineHeight = Math.round((fontSize * lineGap) / gridHeight) * gridHeight;
-  const typeOffset = calculateTypeOffset(lineHeight);
+  // leading height in baseline units
+  const leadingHeight = Math.floor(leading + 1) * gridHeight;
 
-  const topSpace = lineHeight - capHeight * fontSize;
+  // line height is visible typeHeight
+  const lineHeight = typeGridHeight + leadingHeight;
+
+  const verticalRhythm = flow * 8;
+
+  // negative space
+  const negativeSpace = lineHeight - actualSize;
+
+  // type offset
+  const typeOffset = calculateTypeOffset(correctionRatio)(fontSize)(lineHeight);
+
+  // height correction
   const heightCorrection =
-    topSpace > gridHeight ? topSpace - (topSpace % gridHeight) : 0;
+    negativeSpace > gridHeight
+      ? negativeSpace - (negativeSpace % gridHeight)
+      : 0;
 
+  // add 1px space
   const preventCollapse = 1;
 
   return css`
     display: inline-block;
+    max-width: ${measure}ch;
     position: relative;
     font-family: 'MarkOT';
     font-size: ${fontSize}px;
     line-height: ${lineHeight}px;
-    transform: translateY(${typeOffset}em) translateX(-0.1em);
+    transform: translateY(${typeOffset}em) translateX(-0.08em);
     padding-top: ${preventCollapse}px;
+    margin-bottom: ${verticalRhythm}px;
     &:before {
       content: '';
       margin-top: ${-(heightCorrection + preventCollapse)}px;
