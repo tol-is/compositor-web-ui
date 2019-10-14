@@ -11,7 +11,7 @@ const calculateTypeOffset = correctionRatio => fontSize => lh => {
 
 export default ({
   fontSize = 16,
-  measure = 75,
+  measure = 999,
   leading = 0,
   flow = 0
 } = {}) => {
