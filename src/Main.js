@@ -17,7 +17,7 @@ const lorem = new LoremIpsum({
 });
 
 let grid = css`
-  padding: 32px 16px 16px 32px;
+  padding: 64px 16px 16px 56px;
   min-height: 100vh;
   position: relative;
   background-repeat: repeat;
