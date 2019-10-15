@@ -19,10 +19,10 @@ export default ({
   const actualSize = capHeight * fontSize;
 
   // type in grid lines
-  const typeGridHeight = Math.floor(actualSize / gridHeight) * gridHeight;
+  const typeGridHeight = Math.ceil(actualSize / gridHeight) * gridHeight;
 
   // leading height in baseline units
-  const leadingHeight = Math.floor(leading + 1) * gridHeight;
+  const leadingHeight = Math.floor(leading) * gridHeight;
 
   // line height is visible typeHeight
   const lineHeight = typeGridHeight + leadingHeight;
@@ -45,7 +45,7 @@ export default ({
   const preventCollapse = 1;
 
   return css`
-    display: inline-block;
+    display: block;
     max-width: ${measure}ch;
     position: relative;
     font-family: 'MarkOT';
