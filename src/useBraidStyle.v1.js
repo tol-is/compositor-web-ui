@@ -1,5 +1,4 @@
 import { css } from 'emotion';
-
 const gridHeight = 8;
 const correctionRatio = 0.12;
 const capHeight = 0.68;
@@ -45,7 +44,8 @@ export default ({
   const preventCollapse = 1;
 
   return css`
-    display: block;
+    display: inline-block;
+    vertical-align: top;
     max-width: ${measure}ch;
     position: relative;
     font-family: 'MarkOT';

@@ -25,14 +25,14 @@ let grid = css`
   background-size: 100% 16px;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 140, 0.09) 8px,
+    rgba(0, 0, 140, 0.05) 8px,
     transparent 8px
   );
 `;
 
 let container = css`
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   margin: 0 auto;
 `;
 
@@ -40,41 +40,34 @@ export default () => {
   return (
     <section className={grid}>
       <div className={container}>
-        <div
-          className={css`
-            background-color: rgba(0, 0, 0, 0.2);
-          `}
-        >
-          <Text size={70} leading={1} measure={90} flow={0}>
-            {lorem.generateWords(98)}
-          </Text>
-        </div>
-        <div
-          className={css`
-            background-color: rgba(0, 120, 0, 0.2);
-          `}
-        >
-          <Text size={16} leading={4} flow={8} measure={70}>
-            {lorem.generateWords(98)}
-          </Text>
-        </div>
-        <div
-          className={css`
-            background-color: rgba(120, 0, 0, 0.2);
-          `}
-        >
-          <Text size={48} leading={12} measure={70}>
-            {lorem.generateWords(12)}
-          </Text>
-        </div>
-        <div>
-          <BlackBox>
-            <Text size={16} leading={0} measure={70}>
-              {lorem.generateWords(2)}
-            </Text>
-          </BlackBox>
-        </div>
+        <Text size={20} leading="4">
+          {lorem.generateWords(2)}
+        </Text>
+        <Text size={20}>{lorem.generateWords(2)}</Text>
       </div>
     </section>
   );
 };
+
+// import { h } from 'preact';
+// import Box from './Box';
+
+// const debug = true;
+
+// import useBraidStyle from './useBraidStyle.v1';
+
+// export default props => {
+//   const braidStyle = useBraidStyle({
+//     fontSize: props.size,
+//     leading: props.leading,
+//     flow: props.flow,
+//     measure: props.measure
+//   });
+//   return debug ? (
+//     <Box>
+//       <span className={braidStyle} {...props} />
+//     </Box>
+//   ) : (
+//     <span className={braidStyle} {...props} />
+//   );
+// };

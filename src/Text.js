@@ -1,4 +1,7 @@
 import { h } from 'preact';
+import Box from './Box';
+
+const debug = true;
 
 import useBraidStyle from './useBraidStyle.v1';
 
@@ -9,5 +12,11 @@ export default props => {
     flow: props.flow,
     measure: props.measure
   });
-  return <span className={braidStyle} {...props} />;
+  return debug ? (
+    <Box>
+      <span className={braidStyle} {...props} />
+    </Box>
+  ) : (
+    <span className={braidStyle} {...props} />
+  );
 };
