@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import useBraidStyle from './useBraidStyle.v2';
+import useBraidStyle from './useBraidStyle.v1';
 
 export default props => {
   const braidStyle = useBraidStyle({

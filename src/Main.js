@@ -45,8 +45,8 @@ export default () => {
             background-color: rgba(0, 0, 0, 0.2);
           `}
         >
-          <Text size={70} leading={14} measure={10} flow={0}>
-            MMM TTT
+          <Text size={70} leading={1} measure={90} flow={0}>
+            {lorem.generateWords(98)}
           </Text>
         </div>
         <div
