@@ -22,7 +22,7 @@ export default ({
   const typeGridHeight = Math.ceil(actualSize / gridHeight) * gridHeight;
 
   // leading height in baseline units
-  const leadingHeight = Math.floor(leading + 1) * gridHeight;
+  const leadingHeight = Math.floor(leading) * gridHeight;
 
   // line height is visible typeHeight
   const lineHeight = typeGridHeight + leadingHeight;
