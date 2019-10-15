@@ -45,7 +45,7 @@ export default ({
 
   return css`
     display: inline-block;
-    vertical-align: top;
+    vertical-align: bottom;
     max-width: ${measure}ch;
     position: relative;
     font-family: 'MarkOT';

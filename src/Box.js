@@ -29,7 +29,7 @@ export default ({ children }) => {
           height: 100%;
           position: absolute;
           z-index: 10;
-          opacity: 0.25;
+          opacity: 0.45;
           background-color: ${bg};
         }
       `}

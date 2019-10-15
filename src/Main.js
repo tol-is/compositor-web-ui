@@ -4,6 +4,7 @@ import { css, cx } from 'emotion';
 import { LoremIpsum } from 'lorem-ipsum';
 
 import Text from './Text';
+import Span from './Span';
 import BlackBox from './BlackBox';
 
 const lorem = new LoremIpsum({
@@ -25,7 +26,7 @@ let grid = css`
   background-size: 100% 16px;
   background-image: linear-gradient(
     to bottom,
-    rgba(0, 0, 140, 0.05) 8px,
+    rgba(0, 0, 140, 0.01) 8px,
     transparent 8px
   );
 `;
@@ -39,35 +40,8 @@ let container = css`
 export default () => {
   return (
     <section className={grid}>
-      <div className={container}>
-        <Text size={20} leading="4">
-          {lorem.generateWords(2)}
-        </Text>
-        <Text size={20}>{lorem.generateWords(2)}</Text>
-      </div>
+      <div className={container}>:)</div>
     </section>
   );
 };
-
-// import { h } from 'preact';
-// import Box from './Box';
-
-// const debug = true;
-
-// import useBraidStyle from './useBraidStyle.v1';
-
-// export default props => {
-//   const braidStyle = useBraidStyle({
-//     fontSize: props.size,
-//     leading: props.leading,
-//     flow: props.flow,
-//     measure: props.measure
-//   });
-//   return debug ? (
-//     <Box>
-//       <span className={braidStyle} {...props} />
-//     </Box>
-//   ) : (
-//     <span className={braidStyle} {...props} />
-//   );
-// };
+<Text>{lorem.generateWords(42)}</Text>;
