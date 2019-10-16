@@ -21,7 +21,7 @@ export default ({
   const typeGridHeight = Math.ceil(actualSize / gridHeight) * gridHeight;
 
   // leading height in baseline units
-  const leadingHeight = Math.floor(leading) * gridHeight;
+  const leadingHeight = Math.round(leading) * gridHeight;
 
   // line height is visible typeHeight
   const lineHeight = typeGridHeight + leadingHeight;
@@ -44,8 +44,7 @@ export default ({
   const preventCollapse = 1;
 
   return css`
-    display: inline-block;
-    vertical-align: bottom;
+    display: block;
     max-width: ${measure}ch;
     position: relative;
     font-family: 'MarkOT';

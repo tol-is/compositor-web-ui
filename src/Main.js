@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useContext } from 'preact/hooks';
+import { useState, useContext } from 'preact/hooks';
 import { css, cx } from 'emotion';
 import { LoremIpsum } from 'lorem-ipsum';
 
@@ -18,19 +18,6 @@ const lorem = new LoremIpsum({
   }
 });
 
-let grid = css`
-  padding: 64px 16px 16px 56px;
-  min-height: 100vh;
-  position: relative;
-  background-repeat: repeat;
-  background-size: 100% 16px;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 140, 0.01) 8px,
-    transparent 8px
-  );
-`;
-
 let container = css`
   // display: flex;
   // flex-direction: column;
@@ -38,10 +25,49 @@ let container = css`
 `;
 
 export default () => {
+  const [showGrid, setGrid] = useState(true);
+
+  let grid = css`
+    padding: 64px 16px 16px 56px;
+    min-height: 100vh;
+    position: relative;
+    background-repeat: repeat;
+    background-size: 100% 16px;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 140, ${showGrid ? 0.08 : 0}) 8px,
+      transparent 8px
+    );
+  `;
+
   return (
     <section className={grid}>
-      <div className={container}>:)</div>
+      <div className={container}>
+        <Text size={72} leading={2} measure={18} flow={4}>
+          {lorem.generateWords(6).toUpperCase()}
+        </Text>
+        <Text size={23} leading={2} measure={50}>
+          {lorem.generateWords(52)}
+        </Text>
+      </div>
+      <button
+        onClick={() => setGrid(!showGrid)}
+        className={css`
+          appearance: none;
+          width: 1em;
+          height: 1em;
+          overflow: hidden;
+          display: block;
+          font-size: 20px;
+          line-height: 6px;
+          position: fixed;
+          top: 1em;
+          right: 1em;
+          background-color: transparent;
+        `}
+      >
+        /
+      </button>
     </section>
   );
 };
-<Text>{lorem.generateWords(42)}</Text>;
