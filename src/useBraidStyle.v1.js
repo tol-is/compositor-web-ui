@@ -1,5 +1,4 @@
 import { css } from 'emotion';
-const gridHeight = 8;
 const correctionRatio = 0.12;
 const capHeight = 0.68;
 
@@ -9,6 +8,7 @@ const calculateTypeOffset = correctionRatio => fontSize => lh => {
 };
 
 export default ({
+  gridHeight = 8,
   fontSize = 16,
   measure = 999,
   leading = 0,
@@ -21,12 +21,12 @@ export default ({
   const typeGridHeight = Math.ceil(actualSize / gridHeight) * gridHeight;
 
   // leading height in baseline units
-  const leadingHeight = Math.round(leading) * gridHeight;
+  const leadingGridHeight = Math.round(leading) * gridHeight;
 
-  // line height is visible typeHeight
-  const lineHeight = typeGridHeight + leadingHeight;
+  // line height
+  const lineHeight = typeGridHeight + leadingGridHeight;
 
-  const verticalRhythm = flow * 8;
+  const verticalRhythm = flow * gridHeight;
 
   // negative space
   const negativeSpace = lineHeight - actualSize;

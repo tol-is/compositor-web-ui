@@ -7,6 +7,7 @@ import useBraidStyle from './useBraidStyle.v1';
 
 export default props => {
   const braidStyle = useBraidStyle({
+    gridHeight: 8,
     fontSize: props.size,
     leading: props.leading,
     flow: props.flow,

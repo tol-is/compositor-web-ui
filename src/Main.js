@@ -2,10 +2,13 @@ import { h } from 'preact';
 import { useState, useContext } from 'preact/hooks';
 import { css, cx } from 'emotion';
 import { LoremIpsum } from 'lorem-ipsum';
+import useLocalStorage from './useLocalStorage';
 
 import Text from './Text';
 import Span from './Span';
 import BlackBox from './BlackBox';
+
+const baseline = 8;
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -25,29 +28,38 @@ let container = css`
 `;
 
 export default () => {
-  const [showGrid, setGrid] = useState(true);
+  const [showGrid, setGrid] = useLocalStorage('showGrid', true);
 
   let grid = css`
-    padding: 64px 16px 16px 56px;
+    padding: ${baseline * 5}px ${baseline * 6}px;
     min-height: 100vh;
     position: relative;
     background-repeat: repeat;
-    background-size: 100% 16px;
+    background-size: 100% ${baseline * 2}px;
     background-image: linear-gradient(
       to bottom,
-      rgba(0, 0, 140, ${showGrid ? 0.08 : 0}) 8px,
-      transparent 8px
+      rgba(0, 0, 140, ${showGrid ? 0.08 : 0}) ${baseline}px,
+      transparent ${baseline}px
     );
   `;
 
   return (
     <section className={grid}>
       <div className={container}>
-        <Text size={72} leading={2} measure={18} flow={4}>
-          {lorem.generateWords(6).toUpperCase()}
+        <Text size={72} leading={2} flow={8} measure={16}>
+          {lorem.generateWords(6)}
         </Text>
-        <Text size={23} leading={2} measure={50}>
-          {lorem.generateWords(52)}
+        <Text size={20} leading={2} flow={4} measure={50}>
+          {lorem.generateWords(26)}
+        </Text>
+        <Text size={20} leading={2} flow={4} measure={50}>
+          {lorem.generateWords(26)}
+        </Text>
+        <Text size={20} leading={2} flow={4} measure={50}>
+          {lorem.generateWords(26)}
+        </Text>
+        <Text size={20} leading={2} flow={4} measure={50}>
+          {lorem.generateWords(26)}
         </Text>
       </div>
       <button

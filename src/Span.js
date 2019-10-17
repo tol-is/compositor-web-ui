@@ -2,7 +2,7 @@ import { h } from 'preact';
 import Box from './Box';
 import { css } from 'emotion';
 
-const debug = false;
+const debug = true;
 
 export default ({ fontSize, lineHeight, measure = 999, ...props }) => {
   const badStyle = css`

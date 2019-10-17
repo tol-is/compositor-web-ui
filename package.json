@@ -8,10 +8,12 @@
     "emotion": "^10.0.17",
     "lodash": "^4.17.4",
     "lorem-ipsum": "^2.0.3",
-    "preact": "^10.0.0"
+    "preact": "^10.0.0",
+    "use-persisted-state": "^0.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.3.4",
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "parcel": "^1.12.4"
   },
   "browserslist": "> 1%, not ie 11, not op_mini all",
