@@ -1,6 +1,6 @@
 import { h, render } from 'preact';
 import useLocalStorage from './useLocalStorage';
-import Main from './Main';
+import Main from './Main.1';
 import DatGui, {
   DatBoolean,
   DatNumber,
