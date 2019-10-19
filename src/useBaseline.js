@@ -2,28 +2,43 @@
 const preventCollapse = 1;
 
 export default ({
-  correctionRatio = 0.12,
-  capRatio = 0.681,
+  correctionRatio = 0,
+  capRatio = 0.6,
   baseline = 8,
   fontSize = 16,
   measure = 999,
   leading = 0,
   flow = 0
 } = {}) => {
-  // line height
+  // ink height
   const capSize = capRatio * fontSize;
-  const typeHeight = Math.ceil(capSize / baseline) * baseline;
-  const leadingHeight = Math.round(leading) * baseline;
+  // ink in baseline units / round up
+  const typeRows = Math.ceil(capSize / baseline);
+  // type height in px
+  const typeHeight = typeRows * baseline;
+
+  // round leading
+  const leadingRound = Math.round(leading);
+  // if negative min value is typeRows
+  const leadingValue =
+    leadingRound < 0
+      ? Math.min(Math.abs(leadingRound), typeRows) * -1
+      : leadingRound;
+
+  // leading height in px
+  const leadingHeight = leadingValue * baseline;
+
+  // line-height in px
   const lineHeight = typeHeight + leadingHeight;
+
+  // crop white space
+  const negativeSpace = lineHeight - typeHeight;
+  const cropHeight = negativeSpace - (negativeSpace % baseline);
 
   // align to baseline
   const typeOffset = (lineHeight / fontSize - 1) / 2 + correctionRatio;
 
-  // height correction
-  const negativeSpace = lineHeight - typeHeight;
-  const heightCorrection = negativeSpace - (negativeSpace % baseline);
-
-  // flow
+  // vertical flow
   const flowHeight = flow * baseline;
 
   return `
@@ -40,7 +55,7 @@ export default ({
     margin-bottom: ${flowHeight}px;
     &:before {
       content: '';
-      margin-top: ${-(heightCorrection + preventCollapse)}px;
+      margin-top: ${-(cropHeight + preventCollapse)}px;
       display: block;
       height: 0;
     }

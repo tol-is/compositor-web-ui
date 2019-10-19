@@ -42,7 +42,7 @@ export default () => {
   return (
     <section className={grid}>
       <div className={container}>
-        <Text size={57} leading={0} flow={4} measure={16}>
+        <Text size={57} leading={-15} flow={4} measure={16}>
           POTATO
           <br />
           TOMATO

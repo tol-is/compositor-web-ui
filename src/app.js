@@ -3,31 +3,30 @@ import useLocalStorage from './useLocalStorage';
 import Main from './Main';
 import DatGui, {
   DatBoolean,
-  DatButton,
-  DatColor,
-  DatFolder,
   DatNumber,
-  DatPresets,
-  DatSelect,
-  DatString
+  DatPresets
 } from '@tim-soft/react-dat-gui';
 
 import Context from './Context';
 
-const defaults = {
-  showGrid: true,
-  debug: true,
-  baseline: 8,
-  capRatio: 0.694,
-  correctionRatio: 0.12
-};
+const presets = [
+  {
+    Mark: {
+      showGrid: true,
+      debug: true,
+      baseline: 8,
+      capRatio: 0.691,
+      correctionRatio: 0.12
+    }
+  }
+];
 
 const App = () => {
-  const [params, setParams] = useLocalStorage('params', defaults);
+  const [params, setParams] = useLocalStorage('params', presets[0].Mark);
 
-  const reset = () => {
-    setParams(defaults);
-  };
+  // const reset = () => {
+  //   setParams(defaults);
+  // };
 
   const handleUpdate = newData =>
     setParams({
@@ -42,6 +41,7 @@ const App = () => {
       }}
     >
       <DatGui data={params} onUpdate={handleUpdate} style={{ zIndex: 999 }}>
+        <DatPresets label="Presets" options={presets} onUpdate={handleUpdate} />
         <DatBoolean path="showGrid" label="Show Grid" />
         <DatBoolean path="debug" label="Show Boxes" />
         <DatNumber
@@ -65,7 +65,6 @@ const App = () => {
           max={1}
           step={0.001}
         />
-        <DatButton label="Reset" onClick={reset} />
       </DatGui>
       <Main />
     </Context.Provider>
