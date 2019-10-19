@@ -1,8 +1,8 @@
 import { h } from 'preact';
-import Box from './Box';
+import { useContext } from 'preact/hooks';
 import { css } from 'emotion';
 
-const debug = true;
+import RandoBox from './RandoBox';
 
 export default ({ fontSize, lineHeight, measure = 999, ...props }) => {
   const badStyle = css`
@@ -13,10 +13,12 @@ export default ({ fontSize, lineHeight, measure = 999, ...props }) => {
     line-height: ${lineHeight};
   `;
 
+  const { debug } = useContext(Context);
+
   return debug ? (
-    <Box>
+    <RandoBox>
       <span className={badStyle} {...props} />
-    </Box>
+    </RandoBox>
   ) : (
     <span className={badStyle} {...props} />
   );

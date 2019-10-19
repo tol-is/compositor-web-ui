@@ -1,23 +1,31 @@
 import { h } from 'preact';
-import Box from './Box';
+import { useContext } from 'preact/hooks';
+import { css } from 'emotion';
 
-const debug = true;
-
-import useBraidStyle from './useBraidStyle.v1';
+import RandoBox from './RandoBox';
+import Context from './Context';
+import useBaseline from './useBaseline';
 
 export default props => {
-  const braidStyle = useBraidStyle({
-    gridHeight: 8,
+  const { debug, baseline, capRatio, correctionRatio } = useContext(Context);
+
+  const cssRules = useBaseline({
+    baseline: baseline,
+    capRatio: capRatio,
+    correctionRatio: correctionRatio,
     fontSize: props.size,
     leading: props.leading,
     flow: props.flow,
     measure: props.measure
   });
+
+  const textClassName = css(cssRules);
+
   return debug ? (
-    <Box>
-      <span className={braidStyle} {...props} />
-    </Box>
+    <RandoBox>
+      <span className={textClassName} {...props} />
+    </RandoBox>
   ) : (
-    <span className={braidStyle} {...props} />
+    <span className={textClassName} {...props} />
   );
 };
