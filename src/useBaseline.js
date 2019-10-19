@@ -1,13 +1,8 @@
 import { css } from 'emotion';
 
-const calculateTypeOffset = correctionRatio => fontSize => lh => {
-  const lhRatio = lh / fontSize;
-  return (lhRatio - 1) / 2 + correctionRatio;
-};
-
 export default ({
   correctionRatio = 0.12,
-  capHeightRatio = 0.6,
+  capHeightRatio = 0.68,
   gridHeight = 8,
   fontSize = 16,
   measure = 999,
@@ -17,26 +12,31 @@ export default ({
   // calculate actual size
   const capSize = capHeightRatio * fontSize;
 
-  // type in grid lines
+  // type height in baseline units
   const typeHeight = Math.ceil(capSize / gridHeight) * gridHeight;
 
   // leading height in baseline units
-  const leadingGridHeight = Math.round(leading) * gridHeight;
+  const leadingHeight = Math.round(leading) * gridHeight;
 
   // line height
-  const lineHeight = typeHeight + leadingGridHeight;
+  const lineHeight = typeHeight + leadingHeight;
 
   // flow
   const flowHeight = flow * gridHeight;
 
   // negative space
-  const negativeSpace = lineHeight - typeHeight;
-
-  // type offset
-  const typeOffset = calculateTypeOffset(correctionRatio)(fontSize)(lineHeight);
+  const negativeSpace = lineHeight - capSize;
 
   // height correction
-  const heightCorrection = negativeSpace - (negativeSpace % gridHeight);
+  const heightCorrection =
+    negativeSpace > gridHeight
+      ? negativeSpace - (negativeSpace % gridHeight)
+      : 0;
+
+  // type offset
+  const lineHeightRatio = lineHeight / fontSize - 1;
+  console.log(lineHeight / fontSize, fontSize / lineHeight);
+  const typeOffset = lineHeightRatio / +correctionRatio;
 
   // add 1px space
   const preventCollapse = 1;

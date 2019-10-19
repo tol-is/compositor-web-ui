@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import Box from './Box';
 
-const debug = false;
+const debug = true;
 
 import useBraidStyle from './useBraidStyle.v1';
 

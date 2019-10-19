@@ -46,11 +46,11 @@ export default () => {
   return (
     <section className={grid}>
       <div className={container}>
-        <Text size={72} leading={2} flow={8} measure={16}>
-          {lorem.generateWords(6)}
+        <Text size={57} leading={-5} flow={8} measure={16}>
+          {lorem.generateWords(6).toUpperCase()}
         </Text>
-        <Text size={20} leading={2} flow={4} measure={50}>
-          {lorem.generateWords(26)}
+        <Text size={57} leading={0} flow={4} measure={50}>
+          {lorem.generateWords(26).toUpperCase()}
         </Text>
         <Text size={20} leading={2} flow={4} measure={50}>
           {lorem.generateWords(26)}
