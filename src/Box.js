@@ -19,7 +19,7 @@ export default ({ children }) => {
     <div
       className={css`
         position: relative;
-        display: inline-block;
+        display: block;
         width: auto;
         &:after {
           top: 0;
