@@ -1,4 +1,6 @@
 import { css } from 'emotion';
+const correctionRatio = 0.12;
+const capHeight = 0.68;
 
 const calculateTypeOffset = correctionRatio => fontSize => lh => {
   const lhRatio = lh / fontSize;
@@ -6,8 +8,6 @@ const calculateTypeOffset = correctionRatio => fontSize => lh => {
 };
 
 export default ({
-  correctionRatio = 0.12,
-  capHeightRatio = 0.6,
   gridHeight = 8,
   fontSize = 16,
   measure = 999,
@@ -15,28 +15,30 @@ export default ({
   flow = 0
 } = {}) => {
   // calculate actual size
-  const capSize = capHeightRatio * fontSize;
+  const actualSize = capHeight * fontSize;
 
   // type in grid lines
-  const typeHeight = Math.ceil(capSize / gridHeight) * gridHeight;
+  const typeGridHeight = Math.ceil(actualSize / gridHeight) * gridHeight;
 
   // leading height in baseline units
   const leadingGridHeight = Math.round(leading) * gridHeight;
 
   // line height
-  const lineHeight = typeHeight + leadingGridHeight;
+  const lineHeight = typeGridHeight + leadingGridHeight;
 
-  // flow
-  const flowHeight = flow * gridHeight;
+  const verticalRhythm = flow * gridHeight;
 
   // negative space
-  const negativeSpace = lineHeight - typeHeight;
+  const negativeSpace = lineHeight - actualSize;
 
   // type offset
   const typeOffset = calculateTypeOffset(correctionRatio)(fontSize)(lineHeight);
 
   // height correction
-  const heightCorrection = negativeSpace - (negativeSpace % gridHeight);
+  const heightCorrection =
+    negativeSpace > gridHeight
+      ? negativeSpace - (negativeSpace % gridHeight)
+      : 0;
 
   // add 1px space
   const preventCollapse = 1;
@@ -50,7 +52,7 @@ export default ({
     line-height: ${lineHeight}px;
     transform: translateY(${typeOffset}em) translateX(-0.08em);
     padding-top: ${preventCollapse}px;
-    margin-bottom: ${flowHeight}px;
+    margin-bottom: ${verticalRhythm}px;
     &:before {
       content: '';
       margin-top: ${-(heightCorrection + preventCollapse)}px;
