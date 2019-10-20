@@ -14,7 +14,7 @@ import { findIndex } from './find-index';
 import useLocalStorage from './useLocalStorage';
 
 import Context from './Context';
-import Text from './Text';
+import Text from './TextEditable';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -126,7 +126,8 @@ export const Main = () => {
     if (targetIndex !== i) setData(move(data, i, targetIndex));
   };
 
-  const setElementData = i => value => {
+  // compose an update element data
+  const updateElementData = i => value => {
     const newData = [...data];
     newData[i] = value;
     setData(newData);
@@ -151,9 +152,8 @@ export const Main = () => {
                   leading={leading}
                   flow={flow}
                   measure={measure}
-                >
-                  {text}
-                </Text>
+                  text={text}
+                />
               </Item>
             );
           })}
@@ -174,24 +174,38 @@ export default Main;
 
 const initialData = [
   {
-    size: 57,
-    leading: -15,
+    size: 72,
+    leading: 1,
     flow: 4,
-    measure: 16,
-    text: 'MORE'
+    measure: 18,
+    text: lorem.generateWords(8).toUpperCase()
   },
   {
-    size: 57,
-    leading: 4,
+    size: 20,
+    leading: 1,
+    flow: 6,
+    measure: 50,
+    text: lorem.generateWords(26)
+  },
+  {
+    size: 42,
+    leading: 1,
     flow: 4,
-    measure: 16,
-    text: lorem.generateWords(12).toUpperCase()
+    measure: 25,
+    text: lorem.generateWords(8).toUpperCase()
   },
   {
     size: 20,
     leading: 1,
     flow: 4,
     measure: 50,
-    text: lorem.generateWords(26).toUpperCase()
+    text: lorem.generateWords(26)
+  },
+  {
+    size: 20,
+    leading: 1,
+    flow: 4,
+    measure: 50,
+    text: lorem.generateWords(26)
   }
 ];

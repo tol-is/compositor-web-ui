@@ -1,5 +1,15 @@
-import React, { useContext, useState, Fragment } from 'react';
+import React, { useContext, useState, useMemo, Fragment } from 'react';
 import Modal from 'react-modal';
+import { css } from 'emotion';
+
+function getRandomColor() {
+  var letters = '0ABCD';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 5)];
+  }
+  return color;
+}
 
 import DatGui, {
   DatBoolean,
@@ -15,6 +25,28 @@ export default ({ onUpdate, ...props }) => {
   const [showDialog, setShowDialog] = useState(false);
   const open = () => setShowDialog(true);
   const close = () => setShowDialog(false);
+
+  const bg = useMemo(() => getRandomColor(), []);
+
+  const boxClassName = css`
+    position: relative;
+    display: block;
+    width: auto;
+    ${debug &&
+      `
+    &:after {
+      top: 0;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 10;
+      opacity: 0.45;
+      background-color: ${bg};
+    }
+    `}
+  `;
 
   const { size, leading, flow, measure, text } = props;
 
@@ -56,7 +88,7 @@ export default ({ onUpdate, ...props }) => {
           />
         </DatGui>
       )} */}
-      <div style={{ zIndex: 0, position: 'relative' }}>
+      <div className={boxClassName}>
         <Text
           size={size}
           leading={leading}

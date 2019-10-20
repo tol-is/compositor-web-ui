@@ -51,7 +51,6 @@ export default ({
     line-height: ${lineHeight}px;
     transform: translateY(${typeOffset}em) translateX(-0.08em);
     padding-top: ${preventCollapse}px;
-    margin-top: ${flowHeight}px;
     margin-bottom: ${flowHeight}px;
     &:before {
       content: '';

@@ -13,8 +13,8 @@ import Context from './Context';
 const presets = [
   {
     Mark: {
-      showGrid: true,
-      debug: true,
+      showGrid: false,
+      debug: false,
       baseline: 8,
       capRatio: 0.691,
       correctionRatio: 0.12
@@ -43,8 +43,8 @@ const App = () => {
     >
       <DatGui data={params} onUpdate={handleUpdate} style={{ zIndex: 100 }}>
         <DatPresets label="Presets" options={presets} onUpdate={handleUpdate} />
-        <DatBoolean path="showGrid" label="Show Grid" />
-        <DatBoolean path="debug" label="Show Boxes" />
+        <DatBoolean path="showGrid" label="Grid" />
+        <DatBoolean path="debug" label="Debug" />
         <DatNumber
           path="baseline"
           label="Baseline"
