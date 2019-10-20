@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import useLocalStorage from './useLocalStorage';
-import Main from './Main.1';
+import Main from './Main';
 import DatGui, {
   DatBoolean,
   DatNumber,
