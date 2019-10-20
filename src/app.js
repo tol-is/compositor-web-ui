@@ -1,4 +1,5 @@
-import { h, render } from 'preact';
+import React from 'react';
+import { render } from 'react-dom';
 import useLocalStorage from './useLocalStorage';
 import Main from './Main.1';
 import DatGui, {
@@ -71,4 +72,4 @@ const App = () => {
   );
 };
 
-render(<App />, document.body);
+render(<App />, document.getElementById('___baseline'));

@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import { useContext } from 'preact/hooks';
+import React, { useContext } from 'react';
 import { css } from 'emotion';
 
 import RandoBox from './RandoBox';

@@ -1,4 +1,4 @@
-import { h, createContext } from 'preact';
+import React, { createContext } from 'react';
 
 export const Context = createContext({
   showGrid: true,

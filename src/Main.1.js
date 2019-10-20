@@ -1,8 +1,6 @@
-import { h } from 'preact';
-import { useContext } from 'preact/hooks';
+import React, { useContext } from 'react';
 import { css, cx } from 'emotion';
 import { LoremIpsum } from 'lorem-ipsum';
-import useLocalStorage from './useLocalStorage';
 
 import Context from './Context';
 import Text from './Text';

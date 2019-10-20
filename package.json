@@ -13,8 +13,9 @@
     "framer-motion": "^1.6.14",
     "lodash": "^4.17.4",
     "lorem-ipsum": "^2.0.3",
-    "preact": "10.0.1",
+    "react": "^16.10.2",
     "react-dat-gui": "^4.0.0",
+    "react-dom": "^16.10.2",
     "use-persisted-state": "^0.3.0"
   },
   "devDependencies": {
@@ -26,10 +27,5 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
-  },
-  "alias": {
-    "react": "preact/compat",
-    "react-dom/test-utils": "preact/test-utils",
-    "react-dom": "preact/compat"
   }
 }

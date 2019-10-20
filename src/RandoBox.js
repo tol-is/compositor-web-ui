@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import { useMemo } from 'preact/hooks';
+import React from 'react';
 import { css } from 'emotion';
 
 function getRandomColor() {
@@ -12,9 +11,7 @@ function getRandomColor() {
 }
 
 export default ({ children }) => {
-  const bg = useMemo(() => {
-    return getRandomColor();
-  });
+  const bg = getRandomColor();
   return (
     <div
       className={css`

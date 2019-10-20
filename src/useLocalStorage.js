@@ -1,5 +1,4 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import React, { useState } from 'react';
 
 export default (key, initialValue) => {
   // State to store our value

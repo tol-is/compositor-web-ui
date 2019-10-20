@@ -1,5 +1,4 @@
-import { h, Fragment } from 'preact';
-import { useEffect, useState, useRef } from 'preact/hooks';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { findIndex } from './find-index';
 import move from 'array-move';
