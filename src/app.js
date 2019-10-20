@@ -25,10 +25,6 @@ const presets = [
 const App = () => {
   const [params, setParams] = useLocalStorage('params', presets[0].Mark);
 
-  // const reset = () => {
-  //   setParams(defaults);
-  // };
-
   const handleUpdate = newData =>
     setParams({
       ...params,

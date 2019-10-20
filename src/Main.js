@@ -16,6 +16,7 @@ import useLocalStorage from './useLocalStorage';
 import Context from './Context';
 import Text from './TextEditable';
 
+// Spring configs
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
     max: 5,
@@ -27,7 +28,14 @@ const lorem = new LoremIpsum({
   }
 });
 
-const Item = ({ setPosition, moveItem, i, children }) => {
+// Spring configs
+const onTop = { zIndex: 0 };
+const flat = {
+  zIndex: 0,
+  transition: { delay: 0.3 }
+};
+
+const ListItem = ({ setPosition, moveItem, i, children }) => {
   const [isDragging, setDragging] = useState(false);
 
   // We'll use a `ref` to access the DOM element that the `motion.li` produces.
@@ -53,7 +61,7 @@ const Item = ({ setPosition, moveItem, i, children }) => {
       <motion.li
         ref={ref}
         initial={false}
-        // animate={isDragging ? onTop : flat}
+        animate={isDragging ? onTop : flat}
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 1.03 }}
         drag="y"
@@ -140,7 +148,7 @@ export const Main = () => {
           {data.map((d, i) => {
             const { size, leading, flow, measure, text } = d;
             return (
-              <Item
+              <ListItem
                 key={d.text}
                 i={i}
                 {...data}
@@ -154,20 +162,13 @@ export const Main = () => {
                   measure={measure}
                   text={text}
                 />
-              </Item>
+              </ListItem>
             );
           })}
         </ul>
       </div>
     </section>
   );
-};
-
-// Spring configs
-const onTop = { zIndex: 0 };
-const flat = {
-  zIndex: 0,
-  transition: { delay: 0.3 }
 };
 
 export default Main;
