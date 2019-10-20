@@ -175,6 +175,13 @@ export default Main;
 
 const initialData = [
   {
+    size: 400,
+    leading: 0,
+    flow: 4,
+    measure: 18,
+    text: lorem.generateWords(1).toUpperCase()
+  },
+  {
     size: 72,
     leading: 1,
     flow: 4,
@@ -184,7 +191,7 @@ const initialData = [
   {
     size: 20,
     leading: 1,
-    flow: 6,
+    flow: 4,
     measure: 50,
     text: lorem.generateWords(26)
   },

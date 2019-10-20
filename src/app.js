@@ -17,7 +17,8 @@ const presets = [
       debug: false,
       baseline: 8,
       capRatio: 0.691,
-      correctionRatio: 0.12
+      correctionRatio: 0.12,
+      textIndent: 0.1
     }
   }
 ];
@@ -58,6 +59,13 @@ const App = () => {
         <DatNumber
           path="correctionRatio"
           label="Correction Ratio"
+          min={0}
+          max={1}
+          step={0.001}
+        />
+        <DatNumber
+          path="textIndent"
+          label="Text Indent"
           min={0}
           max={1}
           step={0.001}

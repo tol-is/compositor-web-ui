@@ -2,8 +2,9 @@
 const preventCollapse = 1;
 
 export default ({
-  correctionRatio = 0,
   capRatio = 0.6,
+  correctionRatio = 0,
+  textIndent = 0,
   baseline = 8,
   fontSize = 16,
   measure = 999,
@@ -49,7 +50,7 @@ export default ({
     font-family: 'MarkOT';
     font-size: ${fontSize}px;
     line-height: ${lineHeight}px;
-    transform: translateY(${typeOffset}em) translateX(-0.08em);
+    transform: translateY(${typeOffset}em) translateX(-${textIndent}em);
     padding-top: ${preventCollapse}px;
     margin-bottom: ${flowHeight}px;
     &:before {
