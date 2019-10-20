@@ -41,7 +41,7 @@ const App = () => {
         ...params
       }}
     >
-      <DatGui data={params} onUpdate={handleUpdate} style={{ zIndex: 999 }}>
+      <DatGui data={params} onUpdate={handleUpdate} style={{ zIndex: 100 }}>
         <DatPresets label="Presets" options={presets} onUpdate={handleUpdate} />
         <DatBoolean path="showGrid" label="Show Grid" />
         <DatBoolean path="debug" label="Show Boxes" />

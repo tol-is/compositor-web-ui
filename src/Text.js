@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import { css } from 'emotion';
 
-import RandoBox from './RandoBox';
 import Context from './Context';
 import useBaseline from './useBaseline';
 
 export default props => {
-  const { debug, baseline, capRatio, correctionRatio } = useContext(Context);
+  const { baseline, capRatio, correctionRatio } = useContext(Context);
 
   const cssRules = useBaseline({
     baseline: baseline,
@@ -20,11 +19,5 @@ export default props => {
 
   const textClassName = css(cssRules);
 
-  return debug ? (
-    <RandoBox>
-      <span className={textClassName} {...props} />
-    </RandoBox>
-  ) : (
-    <span className={textClassName} {...props} />
-  );
+  return <span className={textClassName} {...props} />;
 };

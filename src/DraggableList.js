@@ -7,11 +7,10 @@ import React, {
 } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { css, cx } from 'emotion';
-import move from 'array-move';
-import { LoremIpsum } from 'lorem-ipsum';
-
 import { findIndex } from './find-index';
-import useLocalStorage from './useLocalStorage';
+import move from 'array-move';
+
+import { LoremIpsum } from 'lorem-ipsum';
 
 import Context from './Context';
 import Text from './Text';
@@ -53,7 +52,7 @@ const Item = ({ setPosition, moveItem, i, children }) => {
       <motion.li
         ref={ref}
         initial={false}
-        // animate={isDragging ? onTop : flat}
+        animate={isDragging ? onTop : flat}
         whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 1.03 }}
         drag="y"
@@ -83,27 +82,8 @@ const Item = ({ setPosition, moveItem, i, children }) => {
   );
 };
 
-export const Main = () => {
-  const [data, setData] = useLocalStorage('data', initialData);
-
-  const { showGrid, baseline } = useContext(Context);
-
-  let container = css`
-    margin: 0 2em;
-  `;
-
-  let grid = css`
-    padding: ${baseline * 10}px 0;
-    min-height: 100vh;
-    position: relative;
-    background-repeat: repeat;
-    background-size: 100% ${baseline * 2}px;
-    background-image: linear-gradient(
-      to bottom,
-      rgba(0, 0, 140, ${showGrid ? 0.08 : 0}) ${baseline}px,
-      transparent ${baseline}px
-    );
-  `;
+export const DraggableList = ({ initialData, children }) => {
+  const [data, setData] = useState(initialData);
 
   let list = css`
     margin: 0;
@@ -126,12 +106,6 @@ export const Main = () => {
     if (targetIndex !== i) setData(move(data, i, targetIndex));
   };
 
-  const setElementData = i => value => {
-    const newData = [...data];
-    newData[i] = value;
-    setData(newData);
-  };
-
   return (
     <section className={grid}>
       <div className={container}>
@@ -146,14 +120,7 @@ export const Main = () => {
                 setPosition={setPosition}
                 moveItem={moveItem}
               >
-                <Text
-                  size={size}
-                  leading={leading}
-                  flow={flow}
-                  measure={measure}
-                >
-                  {text}
-                </Text>
+                yay
               </Item>
             );
           })}
@@ -164,7 +131,7 @@ export const Main = () => {
 };
 
 // Spring configs
-const onTop = { zIndex: 0 };
+const onTop = { zIndex: 1 };
 const flat = {
   zIndex: 0,
   transition: { delay: 0.3 }
@@ -178,14 +145,14 @@ const initialData = [
     leading: -15,
     flow: 4,
     measure: 16,
-    text: 'MORE'
+    text: lorem.generateWords(12).toUpperCase()
   },
   {
     size: 57,
-    leading: 4,
+    leading: -15,
     flow: 4,
     measure: 16,
-    text: lorem.generateWords(12).toUpperCase()
+    text: 'MORE'
   },
   {
     size: 20,
