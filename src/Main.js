@@ -62,8 +62,8 @@ const ListItem = ({ setPosition, moveItem, i, children }) => {
         ref={ref}
         initial={false}
         animate={isDragging ? onTop : flat}
-        whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 1.03 }}
+        // whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 1.01 }}
         drag="y"
         dragOriginY={dragOriginY}
         dragConstraints={{ top: 0, bottom: 0 }}
