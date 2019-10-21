@@ -51,7 +51,7 @@ export default ({ onUpdate, ...props }) => {
   const { size, leading, flow, measure, text } = props;
 
   return (
-    <div className={boxClassName} contentEditable="true">
+    <div className={boxClassName}>
       <Text
         size={size}
         leading={leading}

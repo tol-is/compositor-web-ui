@@ -16,6 +16,15 @@ import useLocalStorage from './useLocalStorage';
 import Context from './Context';
 import Text from './TextEditable';
 
+function rand(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+const uuid = prefix =>
+  `${prefix}-${Math.random()
+    .toString(36)
+    .substring(2) + Date.now().toString(36)}`;
+
 // Spring configs
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -35,7 +44,7 @@ const flat = {
   transition: { delay: 0.3 }
 };
 
-const ListItem = ({ setPosition, moveItem, i, children }) => {
+const ListItem = ({ setPosition, moveItem, i, onClick, children }) => {
   const [isDragging, setDragging] = useState(false);
 
   // We'll use a `ref` to access the DOM element that the `motion.li` produces.
@@ -64,6 +73,7 @@ const ListItem = ({ setPosition, moveItem, i, children }) => {
         animate={isDragging ? onTop : flat}
         // whileHover={{ scale: 1.01 }}
         whileTap={{ scale: 1.01 }}
+        onClick={onClick}
         drag="y"
         dragOriginY={dragOriginY}
         dragConstraints={{ top: 0, bottom: 0 }}
@@ -98,6 +108,7 @@ export const Main = () => {
 
   let container = css`
     margin: 0 2em;
+    max-width: 60em;
   `;
 
   let grid = css`
@@ -141,15 +152,32 @@ export const Main = () => {
     setData(newData);
   };
 
+  const onClickSection = e => {
+    const newData = data.map(d => {
+      const size = rand(12, 100);
+      const length = Math.round((144 - size) * 0.1);
+      const lipsum = lorem.generateWords(length);
+      const text = rand(1, 10) > 8 ? lipsum.toUpperCase() : lipsum;
+      return {
+        id: d.id,
+        size: size,
+        leading: rand(0, 3),
+        flow: Math.round(rand(4, 6)),
+        text: text
+      };
+    });
+    setData(newData);
+  };
+
   return (
-    <section className={grid}>
+    <section className={grid} onClick={onClickSection}>
       <div className={container}>
         <ul className={list}>
           {data.map((d, i) => {
             const { size, leading, flow, measure, text } = d;
             return (
               <ListItem
-                key={d.text}
+                key={d.id}
                 i={i}
                 {...data}
                 setPosition={setPosition}
@@ -175,45 +203,24 @@ export default Main;
 
 const initialData = [
   {
+    id: uuid('lipsum'),
     size: 400,
     leading: 0,
     flow: 4,
-    measure: 18,
     text: lorem.generateWords(1).toUpperCase()
   },
   {
+    id: uuid('lipsum'),
     size: 72,
     leading: 1,
     flow: 4,
-    measure: 18,
-    text: lorem.generateWords(8).toUpperCase()
+    text: lorem.generateWords(8)
   },
   {
-    size: 20,
+    id: uuid('lipsum'),
+    size: 72,
     leading: 1,
     flow: 4,
-    measure: 50,
-    text: lorem.generateWords(26)
-  },
-  {
-    size: 42,
-    leading: 1,
-    flow: 4,
-    measure: 25,
-    text: lorem.generateWords(8).toUpperCase()
-  },
-  {
-    size: 20,
-    leading: 1,
-    flow: 4,
-    measure: 50,
-    text: lorem.generateWords(26)
-  },
-  {
-    size: 20,
-    leading: 1,
-    flow: 4,
-    measure: 50,
-    text: lorem.generateWords(26)
+    text: lorem.generateWords(8)
   }
 ];
