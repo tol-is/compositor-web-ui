@@ -34,7 +34,7 @@ export default ({ onUpdate, ...props }) => {
     width: auto;
     ${debug &&
       `
-    &:after {
+    &:before {
       top: 0;
       left: 0;
       content: '';

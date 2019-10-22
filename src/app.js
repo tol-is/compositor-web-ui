@@ -12,19 +12,38 @@ import Context from './Context';
 
 const presets = [
   {
-    Mark: {
-      showGrid: false,
+    Initial: {
+      fontFamily: 'system-ui',
+      showGrid: true,
       debug: false,
       baseline: 8,
-      capRatio: 0.691,
+      capRatio: 0.704,
+      correctionRatio: 0.112,
+      textIndent: 0.068
+    },
+    Mark: {
+      fontFamily: 'MarkOT',
+      showGrid: true,
+      debug: false,
+      baseline: 8,
+      capRatio: 0.694,
       correctionRatio: 0.12,
       textIndent: 0.1
+    },
+    Comb: {
+      fontFamily: 'Comb',
+      showGrid: true,
+      debug: false,
+      baseline: 8,
+      capRatio: 0.694,
+      correctionRatio: 0.25,
+      textIndent: 0.055
     }
   }
 ];
 
 const App = () => {
-  const [params, setParams] = useLocalStorage('params', presets[0].Mark);
+  const [params, setParams] = useLocalStorage('params', presets[0].Initial);
 
   const handleUpdate = newData =>
     setParams({

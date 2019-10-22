@@ -5,11 +5,16 @@ import Context from './Context';
 import useBaseline from './useBaseline';
 
 export default props => {
-  const { baseline, capRatio, correctionRatio, textIndent } = useContext(
-    Context
-  );
+  const {
+    fontFamily,
+    baseline,
+    capRatio,
+    correctionRatio,
+    textIndent
+  } = useContext(Context);
 
   const cssRules = useBaseline({
+    fontFamily: fontFamily,
     baseline: baseline,
     capRatio: capRatio,
     textIndent: textIndent,

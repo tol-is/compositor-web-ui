@@ -166,7 +166,7 @@ export const Main = () => {
         text: text
       };
     });
-    setData(newData);
+    // setData(newData);
   };
 
   return (
@@ -203,23 +203,23 @@ export default Main;
 
 const initialData = [
   {
-    id: uuid('lipsum'),
+    id: uuid(),
     size: 400,
+    leading: 0,
+    flow: 4,
+    text: 'MO'
+  },
+  {
+    id: uuid(),
+    size: 150,
     leading: 0,
     flow: 4,
     text: lorem.generateWords(1).toUpperCase()
   },
   {
-    id: uuid('lipsum'),
-    size: 72,
-    leading: 1,
-    flow: 4,
-    text: lorem.generateWords(8)
-  },
-  {
-    id: uuid('lipsum'),
-    size: 72,
-    leading: 1,
+    id: uuid(),
+    size: 20,
+    leading: 0,
     flow: 4,
     text: lorem.generateWords(8)
   }

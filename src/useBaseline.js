@@ -2,6 +2,7 @@
 const preventCollapse = 1;
 
 export default ({
+  fontFamily = 'system-ui',
   capRatio = 0.6,
   correctionRatio = 0,
   textIndent = 0,
@@ -47,7 +48,7 @@ export default ({
     vertical-align: top;
     max-width: ${measure}ch;
     position: relative;
-    font-family: 'MarkOT';
+    font-family: ${fontFamily};
     font-size: ${fontSize}px;
     line-height: ${lineHeight}px;
     transform: translateY(${typeOffset}em) translateX(-${textIndent}em);
