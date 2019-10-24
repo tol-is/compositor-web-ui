@@ -219,8 +219,8 @@ const initialData = [
   {
     id: uuid(),
     size: 20,
-    leading: 0,
+    leading: 2,
     flow: 4,
-    text: lorem.generateWords(8)
+    text: lorem.generateWords(78)
   }
 ];
