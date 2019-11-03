@@ -12,35 +12,25 @@ import Context from './Context';
 
 const presets = [
   {
-    Initial: {
-      fontFamily: 'system-ui',
+    Helvetica: {
+      fontFamily: 'Helvetica',
       showGrid: true,
       debug: false,
       shouldUseBaseline: false,
       baseline: 8,
-      capRatio: 0.709,
-      correctionRatio: 0.121,
+      capRatio: 0.722,
+      correctionRatio: 0.153,
       textIndent: 0.068
     },
-    Mark: {
-      fontFamily: 'MarkOT',
+    Roboto: {
+      fontFamily: 'Roboto',
       showGrid: true,
       debug: false,
       shouldUseBaseline: false,
       baseline: 8,
-      capRatio: 0.702,
-      correctionRatio: 0.12,
-      textIndent: 0.1
-    },
-    Comb: {
-      fontFamily: 'Comb',
-      showGrid: true,
-      debug: false,
-      shouldUseBaseline: false,
-      baseline: 8,
-      capRatio: 0.702,
-      correctionRatio: 0.25,
-      textIndent: 0.055
+      capRatio: 0.71,
+      correctionRatio: 0.161,
+      textIndent: 0.081
     },
     Crete: {
       fontFamily: 'Crete Round',
@@ -51,12 +41,32 @@ const presets = [
       capRatio: 0.687,
       correctionRatio: 0.148,
       textIndent: 0.105
+    },
+    Montserrat: {
+      fontFamily: 'Montserrat',
+      showGrid: true,
+      debug: false,
+      shouldUseBaseline: false,
+      baseline: 8,
+      capRatio: 0.687,
+      correctionRatio: 0.145,
+      textIndent: 0.074
+    },
+    Plex: {
+      fontFamily: 'IBM Plex Sans',
+      showGrid: true,
+      debug: false,
+      shouldUseBaseline: false,
+      baseline: 8,
+      capRatio: 0.701,
+      correctionRatio: 0.125,
+      textIndent: 0.091
     }
   }
 ];
 
 const App = () => {
-  const [params, setParams] = useLocalStorage('params', presets[0].Initial);
+  const [params, setParams] = useLocalStorage('params', presets[0].Helvetica);
 
   const handleUpdate = newData =>
     setParams({
