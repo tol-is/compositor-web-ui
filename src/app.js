@@ -50,7 +50,7 @@ const presets = [
       baseline: 8,
       capRatio: 0.703,
       correctionRatio: 0.141,
-      textIndent: 0.074
+      textIndent: 0.11
     },
     Plex: {
       fontFamily: 'IBM Plex Sans',
