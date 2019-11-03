@@ -48,8 +48,8 @@ const presets = [
       debug: false,
       shouldUseBaseline: false,
       baseline: 8,
-      capRatio: 0.687,
-      correctionRatio: 0.145,
+      capRatio: 0.703,
+      correctionRatio: 0.141,
       textIndent: 0.074
     },
     Plex: {
