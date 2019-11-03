@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { css, cx } from 'emotion';
 import { LoremIpsum } from 'lorem-ipsum';
+import { uuid, rand } from './utils';
 
 import Context from './Context';
-import Text from './Text';
-import Span from './Span';
+import Text from './TextEditable';
 
 const lorem = new LoremIpsum({
   sentencesPerParagraph: {
@@ -37,30 +37,49 @@ export default () => {
     );
   `;
 
+  console.log(data);
+
   return (
     <section className={grid}>
       <div className={container}>
-        <Text size={57} leading={-15} flow={4} measure={16}>
-          POTATO
-          <br />
-          TOMATO
-        </Text>
-        <Text size={400} leading={0} flow={4} measure={50}>
-          MORE
-        </Text>
-        <Text size={57} leading={1} flow={4} measure={50}>
-          {lorem.generateWords(26).toUpperCase()}
-        </Text>
-        <Text size={20} leading={1} flow={4} measure={50}>
-          {lorem.generateWords(26)}
-        </Text>
-        <Text size={28} leading={1} flow={4} measure={50}>
-          {lorem.generateWords(26)}
-        </Text>
-        <Text size={38} leading={1} flow={4} measure={50}>
-          {lorem.generateWords(26)}
-        </Text>
+        {data.map((d, i) => {
+          const { uuid, size, leading, flow, measure, text } = d;
+          return (
+            <Text
+              key={uuid}
+              size={size}
+              leading={leading}
+              flow={flow}
+              measure={measure}
+              text={text}
+            />
+          );
+        })}
       </div>
     </section>
   );
 };
+
+const data = [
+  {
+    id: uuid(),
+    size: 120,
+    leading: 0,
+    flow: 2,
+    text: 'MO'
+  },
+  {
+    id: uuid(),
+    size: 48,
+    leading: 0,
+    flow: 2,
+    text: lorem.generateWords(1).toUpperCase()
+  },
+  {
+    id: uuid(),
+    size: 70,
+    leading: 2,
+    flow: 2,
+    text: lorem.generateWords(22).toUpperCase()
+  }
+];

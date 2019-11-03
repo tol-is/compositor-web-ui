@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import useLocalStorage from './useLocalStorage';
-import Main from './Main';
+import Main from './MainSimple';
 import DatGui, {
   DatBoolean,
   DatNumber,
@@ -16,17 +16,19 @@ const presets = [
       fontFamily: 'system-ui',
       showGrid: true,
       debug: false,
+      shouldUseBaseline: false,
       baseline: 8,
-      capRatio: 0.704,
-      correctionRatio: 0.112,
+      capRatio: 0.709,
+      correctionRatio: 0.121,
       textIndent: 0.068
     },
     Mark: {
       fontFamily: 'MarkOT',
       showGrid: true,
       debug: false,
+      shouldUseBaseline: false,
       baseline: 8,
-      capRatio: 0.694,
+      capRatio: 0.702,
       correctionRatio: 0.12,
       textIndent: 0.1
     },
@@ -34,10 +36,21 @@ const presets = [
       fontFamily: 'Comb',
       showGrid: true,
       debug: false,
+      shouldUseBaseline: false,
       baseline: 8,
-      capRatio: 0.694,
+      capRatio: 0.702,
       correctionRatio: 0.25,
       textIndent: 0.055
+    },
+    Crete: {
+      fontFamily: 'Crete Round',
+      showGrid: true,
+      debug: false,
+      shouldUseBaseline: false,
+      baseline: 8,
+      capRatio: 0.687,
+      correctionRatio: 0.148,
+      textIndent: 0.105
     }
   }
 ];
@@ -61,6 +74,7 @@ const App = () => {
         <DatPresets label="Presets" options={presets} onUpdate={handleUpdate} />
         <DatBoolean path="showGrid" label="Grid" />
         <DatBoolean path="debug" label="Debug" />
+        <DatBoolean path="shouldUseBaseline" label="Cap/Baseline" />
         <DatNumber
           path="baseline"
           label="Baseline"

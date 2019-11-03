@@ -13,17 +13,10 @@ import { LoremIpsum } from 'lorem-ipsum';
 import { findIndex } from './find-index';
 import useLocalStorage from './useLocalStorage';
 
+import { uuid, rand } from './utils';
+
 import Context from './Context';
 import Text from './TextEditable';
-
-function rand(min, max) {
-  return Math.random() * (max - min) + min;
-}
-
-const uuid = prefix =>
-  `${prefix}-${Math.random()
-    .toString(36)
-    .substring(2) + Date.now().toString(36)}`;
 
 // Spring configs
 const lorem = new LoremIpsum({

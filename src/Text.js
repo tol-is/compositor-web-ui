@@ -3,6 +3,7 @@ import { css } from 'emotion';
 
 import Context from './Context';
 import useBaseline from './useBaseline';
+import useCapsize from './useCapsize';
 
 export default props => {
   const {
@@ -10,10 +11,11 @@ export default props => {
     baseline,
     capRatio,
     correctionRatio,
-    textIndent
+    textIndent,
+    shouldUseBaseline
   } = useContext(Context);
 
-  const cssRules = useBaseline({
+  const params = {
     fontFamily: fontFamily,
     baseline: baseline,
     capRatio: capRatio,
@@ -23,7 +25,8 @@ export default props => {
     leading: props.leading,
     flow: props.flow,
     measure: props.measure
-  });
+  };
+  const cssRules = shouldUseBaseline ? useBaseline(params) : useCapsize(params);
 
   const textClassName = css(cssRules);
 
