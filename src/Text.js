@@ -5,14 +5,14 @@ import Context from './Context';
 import useBaseline from './useBaseline';
 import useCapsize from './useCapsize';
 
-export default props => {
+export default (props) => {
   const {
     fontFamily,
     baseline,
     capRatio,
     correctionRatio,
     textIndent,
-    shouldUseBaseline
+    shouldUseBaseline,
   } = useContext(Context);
 
   const params = {
@@ -23,8 +23,6 @@ export default props => {
     correctionRatio: correctionRatio,
     fontSize: props.size,
     leading: props.leading,
-    flow: props.flow,
-    measure: props.measure
   };
   const cssRules = shouldUseBaseline ? useBaseline(params) : useCapsize(params);
 

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useMemo, Fragment } from 'react';
-import Modal from 'react-modal';
 import { css } from 'emotion';
 
 function getRandomColor() {
@@ -11,20 +10,11 @@ function getRandomColor() {
   return color;
 }
 
-import DatGui, {
-  DatBoolean,
-  DatNumber,
-  DatPresets
-} from '@tim-soft/react-dat-gui';
-
 import Context from './Context';
 import Text from './Text';
 
 export default ({ onUpdate, ...props }) => {
-  const { debug, baseline } = useContext(Context);
-  const [showDialog, setShowDialog] = useState(false);
-  const open = () => setShowDialog(true);
-  const close = () => setShowDialog(false);
+  const { debug } = useContext(Context);
 
   const bg = useMemo(() => getRandomColor(), []);
 
@@ -33,7 +23,7 @@ export default ({ onUpdate, ...props }) => {
     display: block;
     width: auto;
     ${debug &&
-      `
+    `
     &:before {
       top: 0;
       left: 0;
@@ -48,17 +38,11 @@ export default ({ onUpdate, ...props }) => {
     `}
   `;
 
-  const { size, leading, flow, measure, text } = props;
+  const { size, leading, text } = props;
 
   return (
     <div className={boxClassName}>
-      <Text
-        size={size}
-        leading={leading}
-        flow={flow}
-        measure={measure}
-        onClick={open}
-      >
+      <Text size={size} leading={leading}>
         {text}
       </Text>
     </div>

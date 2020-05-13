@@ -1,107 +1,17 @@
-import React, {
-  Fragment,
-  useContext,
-  useEffect,
-  useState,
-  useRef
-} from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import React, { useContext } from 'react';
 import { css, cx } from 'emotion';
-import move from 'array-move';
-import { LoremIpsum } from 'lorem-ipsum';
-
-import { findIndex } from './find-index';
-import useLocalStorage from './useLocalStorage';
-
-import { uuid, rand } from './utils';
 
 import Context from './Context';
-import Text from './TextEditable';
+import TextBlock from './TextBlock';
 
-// Spring configs
-const lorem = new LoremIpsum({
-  sentencesPerParagraph: {
-    max: 5,
-    min: 4
-  },
-  wordsPerSentence: {
-    max: 8,
-    min: 4
-  }
-});
-
-// Spring configs
-const onTop = { zIndex: 0 };
-const flat = {
-  zIndex: 0,
-  transition: { delay: 0.3 }
-};
-
-const ListItem = ({ setPosition, moveItem, i, onClick, children }) => {
-  const [isDragging, setDragging] = useState(false);
-
-  // We'll use a `ref` to access the DOM element that the `motion.li` produces.
-  // This will allow us to measure its height and position, which will be useful to
-  // decide when a dragging element should switch places with its siblings.
-  const ref = useRef(null);
-
-  // By manually creating a reference to `dragOriginY` we can manipulate this value
-  // if the user is dragging this DOM element while the drag gesture is active to
-  // compensate for any movement as the items are re-positioned.
-  const dragOriginY = useMotionValue(0);
-
-  // Update the measured position of the item so we can calculate when we should rearrange.
-  useEffect(() => {
-    setPosition(i, {
-      height: ref.current.offsetHeight,
-      top: ref.current.offsetTop
-    });
-  });
-
-  return (
-    <Fragment>
-      <motion.li
-        ref={ref}
-        initial={false}
-        animate={isDragging ? onTop : flat}
-        // whileHover={{ scale: 1.01 }}
-        whileTap={{ scale: 1.01 }}
-        onClick={onClick}
-        drag="y"
-        dragOriginY={dragOriginY}
-        dragConstraints={{ top: 0, bottom: 0 }}
-        dragElastic={1}
-        onDragStart={() => setDragging(true)}
-        onDragEnd={() => setDragging(false)}
-        onDrag={(e, { point }) => moveItem(i, point.y)}
-        positionTransition={({ delta }) => {
-          if (isDragging) {
-            // If we're dragging, we want to "undo" the items movement within the list
-            // by manipulating its dragOriginY. This will keep the item under the cursor,
-            // even though it's jumping around the DOM.
-            dragOriginY.set(dragOriginY.get() + delta.y);
-          }
-
-          // If `positionTransition` is a function and returns `false`, it's telling
-          // Motion not to animate from its old position into its new one. If we're
-          // dragging, we don't want any animation to occur.
-          return !isDragging;
-        }}
-      >
-        {children}
-      </motion.li>
-    </Fragment>
-  );
-};
-
-export const Main = () => {
-  const [data, setData] = useLocalStorage('data', initialData);
-
-  const { showGrid, baseline } = useContext(Context);
+export default () => {
+  const { showGrid, baseline, text } = useContext(Context);
 
   let container = css`
-    margin: 0 2em;
-    max-width: 60em;
+    margin: 0 500px 0 5vw;
+    & > * + * {
+      margin-top: ${baseline * 3}px;
+    }
   `;
 
   let grid = css`
@@ -117,103 +27,15 @@ export const Main = () => {
     );
   `;
 
-  let list = css`
-    margin: 0;
-    padding: 0;
-    text-indent: 0;
-    list-style: none;
-  `;
-
-  // We need to collect an array of height and position data for all of this component's
-  // `Item` children, so we can later us that in calculations to decide when a dragging
-  // `Item` should swap places with its siblings.
-  const positions = useRef([]).current;
-  const setPosition = (i, offset) => (positions[i] = offset);
-
-  // Find the ideal index for a dragging item based on its position in the array, and its
-  // current drag offset. If it's different to its current index, we swap this item with that
-  // sibling.
-  const moveItem = (i, dragOffset) => {
-    const targetIndex = findIndex(i, dragOffset, positions);
-    if (targetIndex !== i) setData(move(data, i, targetIndex));
-  };
-
-  // compose an update element data
-  const updateElementData = i => value => {
-    const newData = [...data];
-    newData[i] = value;
-    setData(newData);
-  };
-
-  const onClickSection = e => {
-    const newData = data.map(d => {
-      const size = rand(12, 100);
-      const length = Math.round((144 - size) * 0.1);
-      const lipsum = lorem.generateWords(length);
-      const text = rand(1, 10) > 8 ? lipsum.toUpperCase() : lipsum;
-      return {
-        id: d.id,
-        size: size,
-        leading: rand(0, 3),
-        flow: Math.round(rand(4, 6)),
-        text: text
-      };
-    });
-    // setData(newData);
-  };
-
   return (
-    <section className={grid} onClick={onClickSection}>
+    <section className={grid}>
       <div className={container}>
-        <ul className={list}>
-          {data.map((d, i) => {
-            const { size, leading, flow, measure, text } = d;
-            return (
-              <ListItem
-                key={d.id}
-                i={i}
-                {...data}
-                setPosition={setPosition}
-                moveItem={moveItem}
-              >
-                <Text
-                  size={size}
-                  leading={leading}
-                  flow={flow}
-                  measure={measure}
-                  text={text}
-                />
-              </ListItem>
-            );
-          })}
-        </ul>
+        {text.map(({ text, size, leading }) => {
+          return (
+            <TextBlock key={text} text={text} size={size} leading={leading} />
+          );
+        })}
       </div>
     </section>
   );
 };
-
-export default Main;
-
-const initialData = [
-  {
-    id: uuid(),
-    size: 400,
-    leading: 0,
-    flow: 4,
-    text: 'MO'
-  },
-  {
-    id: uuid(),
-    size: 150,
-    leading: 0,
-    flow: 4,
-    text: lorem.generateWords(1).toUpperCase()
-  },
-  {
-    id: uuid(),
-    size: 20,
-    leading: 2,
-    flow: 4,
-    text: lorem.generateWords(78)
-  }
-];

@@ -1,88 +1,116 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import useLocalStorage from './useLocalStorage';
-import Main from './Main';
 import DatGui, {
+  DatString,
   DatBoolean,
   DatNumber,
-  DatPresets
+  DatFolder,
+  DatButton,
 } from '@tim-soft/react-dat-gui';
+
+import Main from './Main';
+import FontLoader from './FontLoader';
 
 import Context from './Context';
 
-const presets = [
-  {
-    Helvetica: {
-      fontFamily: 'Helvetica',
-      showGrid: true,
-      debug: false,
-      shouldUseBaseline: false,
-      baseline: 8,
-      capRatio: 0.722,
-      correctionRatio: 0.153,
-      textIndent: 0.068
+const defaultParams = {
+  text: [
+    {
+      text: 'XO',
+      size: 400,
+      leading: 0,
     },
-    Roboto: {
-      fontFamily: 'Roboto',
-      showGrid: true,
-      debug: false,
-      shouldUseBaseline: false,
-      baseline: 8,
-      capRatio: 0.71,
-      correctionRatio: 0.161,
-      textIndent: 0.081
+    {
+      text:
+        'Veniam eu commodo labore proident. Nulla amet aliquip ex culpa laboris irure exercitation in excepteur consectetur. Officia aliquip Lorem et laboris.',
+      size: 32,
+      leading: 3,
     },
-    Crete: {
-      fontFamily: 'Crete Round',
-      showGrid: true,
-      debug: false,
-      shouldUseBaseline: false,
-      baseline: 8,
-      capRatio: 0.687,
-      correctionRatio: 0.148,
-      textIndent: 0.105
-    },
-    Montserrat: {
-      fontFamily: 'Montserrat',
-      showGrid: true,
-      debug: false,
-      shouldUseBaseline: false,
-      baseline: 8,
-      capRatio: 0.703,
-      correctionRatio: 0.141,
-      textIndent: 0.11
-    },
-    Plex: {
-      fontFamily: 'IBM Plex Sans',
-      showGrid: true,
-      debug: false,
-      shouldUseBaseline: false,
-      baseline: 8,
-      capRatio: 0.701,
-      correctionRatio: 0.125,
-      textIndent: 0.091
-    }
-  }
-];
+  ],
+  fontFamily: 'Inter',
+  showGrid: true,
+  debug: true,
+  shouldUseBaseline: true,
+  baseline: 8,
+  capRatio: 0.727,
+  correctionRatio: 0.136,
+  textIndent: 0.091,
+  fontData: null,
+};
 
 const App = () => {
-  const [params, setParams] = useLocalStorage('params', presets[0].Helvetica);
+  const [params, setParams] = useLocalStorage('params', defaultParams);
 
-  const handleUpdate = newData =>
+  const [guiParams, setGuiParams] = useState(params);
+
+  useEffect(() => {
+    setGuiParams(params);
+  }, [params]);
+
+  const handleUpdate = (newData) =>
     setParams({
       ...params,
-      ...newData
+      ...newData,
     });
 
-  return (
+  const removeNode = (idx) => {
+    const { text } = guiParams;
+    text.splice(idx, 1);
+    setParams({
+      ...params,
+      text,
+    });
+  };
+
+  const addNode = () => {
+    const { text } = guiParams;
+    text.push({
+      text: 'X',
+      size: 32,
+      leading: 0,
+    });
+
+    setParams({
+      ...params,
+      text,
+    });
+  };
+
+  return !guiParams ? null : (
     <Context.Provider
       value={{
-        ...params
+        setParams: setParams,
+        ...guiParams,
       }}
     >
-      <DatGui data={params} onUpdate={handleUpdate} style={{ zIndex: 100 }}>
-        <DatPresets label="Presets" options={presets} onUpdate={handleUpdate} />
-        <DatBoolean path="showGrid" label="Grid" />
+      <DatGui
+        data={guiParams}
+        onUpdate={handleUpdate}
+        style={{ zIndex: 100, top: '28px' }}
+      >
+        {guiParams.text.map((t, idx) => (
+          <DatFolder title={`Text ${idx}`}>
+            <DatString path={`text[${idx}.text]`} label="Text" />
+            <DatNumber
+              path={`text[${idx}].size`}
+              label="Size"
+              min={16}
+              max={400}
+              step={1}
+            />
+            <DatNumber
+              path={`text[${idx}].leading`}
+              label="Leading"
+              min={0}
+              max={20}
+              step={1}
+            />
+            <DatButton onClick={() => removeNode(idx)} label="Remove Node" />
+          </DatFolder>
+        ))}
+        <DatButton onClick={() => addNode()} label="Add Node" />
+        <DatBoolean path="showGrid" label="Copy" />
         <DatBoolean path="debug" label="Debug" />
         <DatBoolean path="shouldUseBaseline" label="Cap/Baseline" />
         <DatNumber
@@ -106,14 +134,8 @@ const App = () => {
           max={1}
           step={0.001}
         />
-        <DatNumber
-          path="textIndent"
-          label="Text Indent"
-          min={0}
-          max={1}
-          step={0.001}
-        />
       </DatGui>
+      <FontLoader />
       <Main />
     </Context.Provider>
   );

@@ -4,7 +4,9 @@ export const Context = createContext({
   showGrid: true,
   setGrid: () => null,
   debug: true,
-  setDebug: () => null
+  setDebug: () => null,
+  font: null,
+  setFont: () => 1,
 });
 
 export default Context;

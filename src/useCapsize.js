@@ -8,9 +8,7 @@ export default ({
   textIndent = 0,
   baseline = 8,
   fontSize = 16,
-  measure = 999,
   leading = 0,
-  flow = 0
 } = {}) => {
   // ink height
   const capSize = capRatio * fontSize;
@@ -40,20 +38,15 @@ export default ({
   // align to baseline
   const typeOffset = (lineHeight / fontSize - 1) / 2 + correctionRatio;
 
-  // vertical flow
-  const flowHeight = flow * baseline;
-
   return `
     display: block;
     vertical-align: top;
-    max-width: ${measure}ch;
     position: relative;
     font-family: ${fontFamily};
     font-size: ${fontSize}px;
     line-height: ${lineHeight}px;
     transform: translateY(${typeOffset}em) translateX(-${textIndent}em);
     padding-top: ${preventCollapse}px;
-    margin-bottom: ${flowHeight}px;
     &:before {
       content: '';
       margin-top: ${-(cropHeight + preventCollapse)}px;
