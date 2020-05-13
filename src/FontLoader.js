@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { css, injectGlobal } from 'emotion';
 import fontkit from 'fontkit';
-
 import blobToBuffer from 'blob-to-buffer';
 
 import Context from './Context';
@@ -29,7 +28,7 @@ export default () => {
         }
       `;
     }
-  }, []);
+  }, [fontData]);
 
   const onChange = (e) => {
     let file = e.target.files && e.target.files[0];

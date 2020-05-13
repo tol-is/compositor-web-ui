@@ -77,6 +77,10 @@ const App = () => {
     });
   };
 
+  const reset = () => {
+    setParams(defaultParams);
+  };
+
   return !guiParams ? null : (
     <Context.Provider
       value={{
@@ -106,13 +110,16 @@ const App = () => {
               max={20}
               step={1}
             />
-            <DatButton onClick={() => removeNode(idx)} label="Remove Node" />
+            <DatButton
+              onClick={() => removeNode(idx)}
+              label="Remove Text Node"
+            />
           </DatFolder>
         ))}
-        <DatButton onClick={() => addNode()} label="Add Node" />
-        <DatBoolean path="showGrid" label="Copy" />
+        <DatButton onClick={() => addNode()} label="Add Text Node" />
+        <DatBoolean path="showGrid" label="Grid" />
         <DatBoolean path="debug" label="Debug" />
-        <DatBoolean path="shouldUseBaseline" label="Cap/Baseline" />
+        <DatBoolean path="shouldUseBaseline" label="Cap Size/Baseline" />
         <DatNumber
           path="baseline"
           label="Baseline"
@@ -129,11 +136,12 @@ const App = () => {
         />
         <DatNumber
           path="correctionRatio"
-          label="Correction Ratio"
+          label="Descender Ratio"
           min={0}
           max={1}
           step={0.001}
         />
+        <DatButton onClick={() => reset()} label="Reset" />
       </DatGui>
       <FontLoader />
       <Main />

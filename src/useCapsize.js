@@ -40,7 +40,6 @@ export default ({
 
   return `
     display: block;
-    vertical-align: top;
     position: relative;
     font-family: ${fontFamily};
     font-size: ${fontSize}px;
