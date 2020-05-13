@@ -29,8 +29,7 @@ const defaultParams = {
   debug: false,
   baseline: 8,
   capRatio: 0.727,
-  correctionRatio: 0.136,
-  textIndent: 0.091,
+  correctionRatio: 0.135,
   fontData: null,
 };
 
