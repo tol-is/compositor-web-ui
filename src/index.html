@@ -4,10 +4,24 @@
     <meta charset="utf-8" />
 
     <style>
+      html {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        line-height: 1;
+        min-height: 100vh;
+        word-wrap: break-word;
+        font-kerning: normal;
+        font-feature-settings: 'kern' on, 'liga' on, 'rlig' on, 'calt' off;
+        font-family: Inter, system-ui, -apple-system, 'Helvetica Neue',
+          sans-serif;
       }
+
       * {
         margin: 0;
         padding: 0;
@@ -16,6 +30,10 @@
         font-size: 100%;
         font: inherit;
         vertical-align: baseline;
+      }
+
+      a {
+        color: #fd62ff;
       }
     </style>
   </head>

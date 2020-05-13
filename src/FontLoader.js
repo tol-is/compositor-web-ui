@@ -11,7 +11,7 @@ const defaultFontUrl = Inter;
 
 export default () => {
   //
-  const { setParams, fontFamily, fontData, ...restParams } = useContext(
+  const { setParams, screen, fontFamily, fontData, ...restParams } = useContext(
     Context
   );
   //
@@ -58,11 +58,22 @@ export default () => {
     });
   };
 
+  const setScreen = (screen) => {
+    setParams({
+      ...restParams,
+      screen,
+      fontFamily,
+      fontData,
+      screen: screen,
+    });
+  };
+
   const useFont = ({ fontData, font }) => {
     if (!font) return;
 
     setParams({
       ...restParams,
+      screen: screen,
       fontData: fontData,
       fontFamily: font.familyName,
       capRatio: font.capHeight / font.unitsPerEm,
@@ -88,12 +99,38 @@ export default () => {
         width: 280px;
         font-size: 12px;
         font-family: Lucida Grande, sans-serif;
-        height: 28px;
+        height: 57px;
         background-color: #1a1a1a;
-        & > * {
+        & > .tabs {
+          position: relative;
+          line-height: 28px;
+          height: 28px;
+          padding-left: 13px;
+          & > button {
+            color: #eee;
+            line-height: 28px;
+            height: 28px;
+            background: none;
+            margin-right: 20px;
+            &.selected {
+              text-decoration: underline;
+            }
+          }
+          &:before {
+            content: '';
+            width: 5px;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            position: absolute;
+            background-color: #fd62ff;
+          }
+        }
+        & > .upload_button {
           position: relative;
           color: #eee;
           line-height: 28px;
+          height: 28px;
           padding-left: 13px;
           &:before {
             content: '';
@@ -107,7 +144,7 @@ export default () => {
         }
       `}
     >
-      <div type="button" tabIndex={-1} aria-hidden={true}>
+      <div className="upload_button" tabIndex={-1} aria-hidden={true}>
         Upload Font
         <input
           type="file"
@@ -122,6 +159,22 @@ export default () => {
             left: 0;
           `}
         />
+      </div>
+      <div className="tabs">
+        <button
+          className={screen === 'config' ? 'selected' : ''}
+          type="button"
+          onClick={() => setScreen('config')}
+        >
+          Config
+        </button>
+        <button
+          className={screen === 'preview' ? 'selected' : ''}
+          type="button"
+          onClick={() => setScreen('preview')}
+        >
+          Preview
+        </button>
       </div>
     </div>
   );
