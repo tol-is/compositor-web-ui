@@ -17,21 +17,16 @@ import Context from './Context';
 const defaultParams = {
   text: [
     {
-      text: 'XO',
-      size: 400,
-      leading: 0,
-    },
-    {
       text:
-        'Veniam eu commodo labore proident. Nulla amet aliquip ex culpa laboris irure exercitation in excepteur consectetur. Officia aliquip Lorem et laboris.',
+        'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
       size: 32,
       leading: 3,
     },
   ],
   fontFamily: 'Inter',
   showGrid: true,
-  debug: true,
   shouldUseBaseline: true,
+  debug: false,
   baseline: 8,
   capRatio: 0.727,
   correctionRatio: 0.136,
