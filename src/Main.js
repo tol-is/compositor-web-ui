@@ -53,7 +53,7 @@ export default () => {
               </p>
               <ul>
                 <li>Upload your font</li>
-                <li>Use the config tab for any optical adjustments.</li>
+                <li>Use the config tab for optical adjustments.</li>
                 <li>Use the preview tab to create your composition</li>
               </ul>
             </>

@@ -19,7 +19,7 @@ const defaultParams = {
   text: [
     {
       text: 'Lorem ipsum adipisicing nulla',
-      size: 72,
+      size: 128,
       leading: 3,
     },
     {
