@@ -78,7 +78,7 @@ export default () => {
           }
         `}
       >
-        <a target="_blank" href="https://a7sc11u.dev">
+        <a target="_blank" href="https://github.com/a7sc11u">
           A7SC11U
         </a>
         <a target="_blank" href="https://github.com/a7sc11u/basekick-gui">
