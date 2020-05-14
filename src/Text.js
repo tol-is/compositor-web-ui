@@ -39,7 +39,7 @@ export default ({ onUpdate, ...props }) => {
     `}
   `;
 
-  const { fontFamily, baseline, capRatio, correctionRatio } = useContext(
+  const { fontFamily, baseline, capRatio, descenderRatio } = useContext(
     Context
   );
 
@@ -47,7 +47,7 @@ export default ({ onUpdate, ...props }) => {
     fontFamily: fontFamily,
     baseline: baseline,
     capRatio: capRatio,
-    correctionRatio: correctionRatio,
+    descenderRatio: descenderRatio,
     fontSize: props.size,
     leading: props.leading,
   };

@@ -8,16 +8,21 @@ export default () => {
   const { showGrid, screen, baseline, rhythm, text } = useContext(Context);
 
   let container = css`
-    margin: 0 500px 0 5vw;
+    margin-right: 280px;
+    max-width: 66rem;
+    margin-left: 4vw;
+    ${screen === 'preview' &&
+    `
     & > * + * {
       margin-top: ${baseline * rhythm}px;
     }
+    `}
   `;
 
   const showBg = showGrid && screen === 'preview';
 
   let grid = css`
-    padding: ${baseline * 10}px 0;
+    padding: ${baseline * 8}px 0;
     min-height: 100vh;
     position: relative;
     background-repeat: repeat;
@@ -34,7 +39,24 @@ export default () => {
       <section className={grid}>
         <div className={container}>
           {screen === 'config' ? (
-            <Text text={'XO'} size={400} leading={0} />
+            <>
+              <Text text={'X'} size={400} leading={0} />
+              <p>
+                A simple GUI to preview basekick metrics inspired by{' '}
+                <a href="https://seek-oss.github.io/braid-design-system/">
+                  Braid Design System
+                </a>{' '}
+                and{' '}
+                <a href="https://github.com/michaeltaranto/basekick">
+                  Basekick
+                </a>
+              </p>
+              <ul>
+                <li>Upload your font</li>
+                <li>Use the config tab for any optical adjustments.</li>
+                <li>Use the preview tab to create your composition</li>
+              </ul>
+            </>
           ) : (
             text.map(({ text, size, leading }) => {
               return (

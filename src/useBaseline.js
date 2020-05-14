@@ -4,8 +4,7 @@ const preventCollapse = 1;
 export default ({
   fontFamily = 'system-ui',
   capRatio = 0.6,
-  correctionRatio = 0,
-  textIndent = 0,
+  descenderRatio = 0,
   baseline = 8,
   fontSize = 16,
   leading = 0,
@@ -36,7 +35,7 @@ export default ({
   const cropHeight = negativeSpace - (negativeSpace % baseline);
 
   // align to baseline
-  const typeOffset = (lineHeight / fontSize - 1) / 2 + correctionRatio;
+  const typeOffset = (lineHeight / fontSize - 1) / 2 + descenderRatio;
 
   return `
     display: block;
@@ -44,7 +43,7 @@ export default ({
     font-family: ${fontFamily};
     font-size: ${fontSize}px;
     line-height: ${lineHeight}px;
-    transform: translateY(${typeOffset}em) translateX(-${textIndent}em);
+    transform: translateY(${typeOffset}em);
     padding-top: ${preventCollapse}px;
     &:before {
       content: '';

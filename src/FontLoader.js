@@ -71,12 +71,18 @@ export default () => {
   const useFont = ({ fontData, font }) => {
     if (!font) return;
 
+    const descenderRatio =
+      -1 *
+      (((font.ascent + Math.abs(font.descent)) / font.unitsPerEm - 1) / 2 -
+        Math.abs(font.descent / font.unitsPerEm));
+
     setParams({
       ...restParams,
       screen: screen,
       fontData: fontData,
       fontFamily: font.familyName,
       capRatio: font.capHeight / font.unitsPerEm,
+      descenderRatio: descenderRatio,
     });
 
     injectGlobal`
@@ -144,22 +150,6 @@ export default () => {
         }
       `}
     >
-      <div className="upload_button" tabIndex={-1} aria-hidden={true}>
-        Upload Font
-        <input
-          type="file"
-          onChange={onChange}
-          className={css`
-            position: absolute;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            top: 0;
-            left: 0;
-          `}
-        />
-      </div>
       <div className="tabs">
         <button
           className={screen === 'config' ? 'selected' : ''}
@@ -175,6 +165,22 @@ export default () => {
         >
           Preview
         </button>
+      </div>
+      <div className="upload_button" tabIndex={-1} aria-hidden={true}>
+        Upload Font
+        <input
+          type="file"
+          onChange={onChange}
+          className={css`
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            top: 0;
+            left: 0;
+          `}
+        />
       </div>
     </div>
   );
