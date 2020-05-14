@@ -42,7 +42,7 @@ export default () => {
             <>
               <Text text={'X'} size={400} leading={0} />
               <p>
-                A simple GUI to preview basekick metrics inspired by{' '}
+                A simple GUI to preview baseline typography inspired by{' '}
                 <a href="https://seek-oss.github.io/braid-design-system/">
                   Braid Design System
                 </a>{' '}
