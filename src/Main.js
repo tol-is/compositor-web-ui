@@ -77,8 +77,12 @@ export default () => {
           }
         `}
       >
-        <a href="https://a7sc11u.dev">A7SC11U</a>
-        <a href="https://github.com/a7sc11u/basekick-gui">GITHUB</a>
+        <a target="_blank" href="https://a7sc11u.dev">
+          A7SC11U
+        </a>
+        <a target="_blank" href="https://github.com/a7sc11u/basekick-gui">
+          GITHUB
+        </a>
       </footer>
     </>
   );

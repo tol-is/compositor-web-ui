@@ -103,8 +103,7 @@ export default () => {
         z-index: 100;
         top: 0;
         width: 280px;
-        font-size: 12px;
-        font-family: Lucida Grande, sans-serif;
+
         height: 57px;
         background-color: #1a1a1a;
         & > .tabs {
@@ -114,7 +113,11 @@ export default () => {
           padding-left: 13px;
           & > button {
             color: #eee;
+            font-size: 12px;
+            font-family: Lucida Grande, sans-serif;
+            -webkit-font-smoothing: antialiased;
             line-height: 28px;
+            padding: 0;
             height: 28px;
             background: none;
             margin-right: 20px;
@@ -138,6 +141,9 @@ export default () => {
           line-height: 28px;
           height: 28px;
           padding-left: 13px;
+          font-size: 12px;
+          font-family: Lucida Grande, sans-serif;
+          -webkit-font-smoothing: antialiased;
           &:before {
             content: '';
             width: 5px;
