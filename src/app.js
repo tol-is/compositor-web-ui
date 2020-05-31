@@ -31,7 +31,7 @@ const defaultParams = {
   ],
   screen: 'config',
   fontFamily: 'Inter',
-  showGrid: false,
+  showGrid: true,
   debug: false,
   baseline: 16,
   rhythm: 4,
