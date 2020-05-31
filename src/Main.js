@@ -20,8 +20,9 @@ export default () => {
 
   let container = css`
     margin-right: 280px;
-    max-width: 66rem;
     margin-left: 6vw;
+    margin-right: 6vw;
+
     ${screen === 'preview' &&
     `
     & > * + * {
@@ -49,22 +50,9 @@ export default () => {
       <section className={grid}>
         <div className={container}>
           {screen === 'config' ? (
-            <>
-              <div
-                style={
-                  {
-                    // paddingTop: `${fontSize * 0.12}px`,
-                    // paddingBottom: `${fontSize * 0.3}px`,
-                  }
-                }
-              >
-                <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
-                  Compositor
-                </TextMetrics>
-              </div>
-
-              <div style={{ fontFamily: fontFamily }}></div>
-            </>
+            <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
+              Compositor
+            </TextMetrics>
           ) : (
             text.map(({ text, size, leading, measure }) => {
               return (
@@ -87,7 +75,7 @@ export default () => {
             display: flex;
             height: auto;
             bottom: 0;
-            padding: 0.5em 1em;
+            padding: 0.2em 0.6em 0.4em 0.6em;
             right: 0px;
             background-color: #1a1a1a;
             color: white;
