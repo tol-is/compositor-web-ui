@@ -20,7 +20,7 @@ export default ({ onUpdate, ...props }) => {
 
   const boxClassName = css`
     position: relative;
-    display: block;
+    display: inline-block;
     width: auto;
     ${debug &&
     `
@@ -39,10 +39,16 @@ export default ({ onUpdate, ...props }) => {
   `;
 
   return (
-    <div className={boxClassName}>
-      <TextBaseline fontSize={props.size} leading={props.leading}>
-        {props.text}
-      </TextBaseline>
+    <div>
+      <div className={boxClassName}>
+        <TextBaseline
+          fontSize={props.size}
+          leading={props.leading}
+          measure={props.measure}
+        >
+          {props.text}
+        </TextBaseline>
+      </div>
     </div>
   );
 };

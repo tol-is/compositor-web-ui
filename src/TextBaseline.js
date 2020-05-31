@@ -6,7 +6,7 @@ const baseline = 8;
 const leading = 0;
 const preventCollapse = 1;
 
-export default ({ children, fontSize, leading = 0 }) => {
+export default ({ children, fontSize = 14, leading = 0, measure = 100 }) => {
   const {
     baseline,
     fontFamily,
@@ -61,6 +61,7 @@ export default ({ children, fontSize, leading = 0 }) => {
           font-size: ${fontSize}px;
           line-height: ${lineHeight}px;
           transform: translateY(${baselineOffset}px);
+          max-width: ${measure}ch;
           padding-top: ${preventCollapse}px;
           &:before {
             content: '';

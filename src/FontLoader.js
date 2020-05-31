@@ -5,9 +5,9 @@ import blobToBuffer from 'blob-to-buffer';
 
 import Context from './Context';
 
-import Inter from './fonts/Inter-Regular.woff2';
+import Averta from './fonts/AvertaPE-Regular.otf';
 
-const defaultFontUrl = Inter;
+const defaultFontUrl = Averta;
 
 export default () => {
   //
@@ -72,7 +72,6 @@ export default () => {
     if (!font) return;
 
     console.log(font);
-
     setParams({
       ...restParams,
       screen: screen,
@@ -173,7 +172,7 @@ export default () => {
         </button>
       </div>
       <div className="upload_button" tabIndex={-1} aria-hidden={true}>
-        Upload Font
+        Upload Font File
         <input
           type="file"
           onChange={onChange}

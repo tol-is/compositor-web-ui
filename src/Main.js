@@ -3,7 +3,7 @@ import { css, cx } from 'emotion';
 
 import Context from './Context';
 import Text from './Text';
-
+import TextBaseline from './TextBaseline';
 import TextMetrics from './TextMetrics';
 
 export default () => {
@@ -15,6 +15,7 @@ export default () => {
     text,
     lineHeight,
     fontSize,
+    fontFamily,
   } = useContext(Context);
 
   let container = css`
@@ -50,60 +51,59 @@ export default () => {
           {screen === 'config' ? (
             <>
               <div
-                style={{
-                  paddingTop: `${fontSize * 0.12}px`,
-                  paddingBottom: `${fontSize * 0.3}px`,
-                }}
+                style={
+                  {
+                    // paddingTop: `${fontSize * 0.12}px`,
+                    // paddingBottom: `${fontSize * 0.3}px`,
+                  }
+                }
               >
                 <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
                   Compositor
                 </TextMetrics>
               </div>
-              {/* <Text text={'X'} size={400} leading={0} /> */}
 
-              <p>
-                {/* A simple GUI to preview baseline typography inspired by{' '} */}
-                {/* <a href="https://seek-oss.github.io/braid-design-system/">
-                  Braid Design System
-                </a>{' '}
-                and{' '}
-                <a href="https://github.com/michaeltaranto/basekick">
-                  Basekick
-                </a> */}
-              </p>
-              {/* <ul>
-                <li>Upload your font</li>
-                <li>Metrics will be computed automatically</li>
-                <li>Use the preview tab to test your composition</li>
-              </ul> */}
+              <div style={{ fontFamily: fontFamily }}></div>
             </>
           ) : (
-            text.map(({ text, size, leading }) => {
+            text.map(({ text, size, leading, measure }) => {
               return (
-                <Text key={text} text={text} size={size} leading={leading} />
+                <Text
+                  key={text}
+                  text={text}
+                  size={size}
+                  leading={leading}
+                  measure={measure}
+                />
               );
             })
           )}
         </div>
       </section>
-      <footer
-        className={css`
-          position: fixed;
-          bottom: 10px;
-          right: 0px;
-          font-size: 14px;
-          & > * {
-            margin-right: 20px;
-          }
-        `}
-      >
-        <a target="_blank" href="https://github.com/a7sc11u">
-          A7SC11U
-        </a>
-        <a target="_blank" href="https://github.com/a7sc11u/compositor-gui">
-          GITHUB
-        </a>
-      </footer>
+      {screen === 'config' ? (
+        <footer
+          className={css`
+            position: fixed;
+            display: flex;
+            height: auto;
+            bottom: 0;
+            padding: 0.5em 1em;
+            right: 0px;
+            background-color: #1a1a1a;
+            color: white;
+            & > * + * {
+              display: inline-block;
+              margin-left: 20px;
+            }
+          `}
+        >
+          <TextBaseline>
+            <a target="_blank" href="https://github.com/a7sc11u">
+              A7SC11U
+            </a>
+          </TextBaseline>
+        </footer>
+      ) : null}
     </>
   );
 };

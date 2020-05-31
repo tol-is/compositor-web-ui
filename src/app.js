@@ -20,28 +20,30 @@ const defaultParams = {
     {
       text: 'Lorem ipsum adipisicing nulla',
       size: 96,
+      measure: 15,
       leading: 1,
     },
     {
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
       size: 32,
+      measure: 45,
       leading: 1,
     },
   ],
   screen: 'config',
-  fontFamily: 'Inter',
+  fontFamily: 'Averta PE',
   showGrid: true,
   debug: false,
   baseline: 16,
   rhythm: 4,
   upm: 1000,
-  ascent: 1000,
-  descent: -200,
-  capHeight: 800,
-  xHeight: 550,
+  ascent: 978,
+  descent: -258,
+  capHeight: 710,
+  xHeight: 486,
   lineHeight: 1,
-  fontSize: 300,
+  fontSize: 550,
   fontData: null,
   blocker: true,
 };
@@ -220,6 +222,13 @@ const App = () => {
                 label="Leading"
                 min={-4}
                 max={20}
+                step={1}
+              />
+              <DatNumber
+                path={`text[${idx}].measure`}
+                label="Measure"
+                min={10}
+                max={65}
                 step={1}
               />
               <DatButton

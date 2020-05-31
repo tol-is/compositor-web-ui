@@ -12,6 +12,7 @@
     "emotion": "^10.0.17",
     "fontkit": "^1.8.1",
     "lodash": "^4.17.4",
+    "parcel-plugin-static-files-copy": "^2.3.1",
     "react": ">=16.3.0",
     "react-dat-gui": "^4.0.0",
     "react-dom": "^16.10.2",
@@ -27,5 +28,9 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html"
+  },
+  "staticFiles": {
+    "staticPath": "static",
+    "watcherGlob": "**"
   }
 }
