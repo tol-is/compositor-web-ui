@@ -71,18 +71,18 @@ export default () => {
   const useFont = ({ fontData, font }) => {
     if (!font) return;
 
-    const descenderRatio =
-      -1 *
-      (((font.ascent + Math.abs(font.descent)) / font.unitsPerEm - 1) / 2 -
-        Math.abs(font.descent / font.unitsPerEm));
+    console.log(font);
 
     setParams({
       ...restParams,
       screen: screen,
       fontData: fontData,
       fontFamily: font.familyName,
-      capRatio: font.capHeight / font.unitsPerEm,
-      descenderRatio: descenderRatio,
+      upm: font.unitsPerEm,
+      capHeight: font.capHeight,
+      xHeight: font.xHeight,
+      descent: font.descent,
+      ascent: font.ascent,
     });
 
     injectGlobal`

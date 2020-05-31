@@ -1,9 +1,8 @@
-import React, { useContext, useMemo, Fragment } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { css } from 'emotion';
 
 import Context from './Context';
-import useBaseline from './useBaseline';
-import useCapsize from './useCapsize';
+import TextBaseline from './TextBaseline';
 
 function getRandomColor() {
   var letters = '0ABCD';
@@ -15,7 +14,7 @@ function getRandomColor() {
 }
 
 export default ({ onUpdate, ...props }) => {
-  const { debug, screen } = useContext(Context);
+  const { debug } = useContext(Context);
 
   const bg = useMemo(() => getRandomColor(), []);
 
@@ -23,7 +22,7 @@ export default ({ onUpdate, ...props }) => {
     position: relative;
     display: block;
     width: auto;
-    ${(debug || screen === 'config') &&
+    ${debug &&
     `
     &:before {
       top: 0;
@@ -39,26 +38,11 @@ export default ({ onUpdate, ...props }) => {
     `}
   `;
 
-  const { fontFamily, baseline, capRatio, descenderRatio } = useContext(
-    Context
-  );
-
-  const params = {
-    fontFamily: fontFamily,
-    baseline: baseline,
-    capRatio: capRatio,
-    descenderRatio: descenderRatio,
-    fontSize: props.size,
-    leading: props.leading,
-  };
-  const cssRules =
-    screen === 'config' ? useCapsize(params) : useBaseline(params);
-
-  const textClassName = css(cssRules);
-
   return (
     <div className={boxClassName}>
-      <span className={textClassName}>{props.text}</span>
+      <TextBaseline fontSize={props.size} leading={props.leading}>
+        {props.text}
+      </TextBaseline>
     </div>
   );
 };

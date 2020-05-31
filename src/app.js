@@ -19,24 +19,29 @@ const defaultParams = {
   text: [
     {
       text: 'Lorem ipsum adipisicing nulla',
-      size: 128,
-      leading: 3,
+      size: 96,
+      leading: 1,
     },
     {
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
       size: 32,
-      leading: 3,
+      leading: 1,
     },
   ],
   screen: 'config',
   fontFamily: 'Inter',
   showGrid: false,
   debug: false,
-  baseline: 8,
-  rhythm: 6,
-  capRatio: 0.727,
-  descenderRatio: 0.137,
+  baseline: 16,
+  rhythm: 4,
+  upm: 1000,
+  ascent: 1000,
+  descent: -200,
+  capHeight: 800,
+  xHeight: 550,
+  lineHeight: 1,
+  fontSize: 300,
   fontData: null,
   blocker: true,
 };
@@ -137,19 +142,49 @@ const App = () => {
           onUpdate={handleUpdate}
           style={{ zIndex: 100, top: '57px' }}
         >
+          <DatString path="fontFamily" label="Font" />
           <DatNumber
-            path="capRatio"
-            label="Cap Ratio"
-            min={0}
-            max={1}
-            step={0.001}
+            path="lineHeight"
+            label="Line Height"
+            min={0.8}
+            max={3}
+            step={0.1}
           />
           <DatNumber
-            path="descenderRatio"
-            label="Descender Ratio"
+            path="fontSize"
+            label="Font Size"
+            min={12}
+            max={1000}
+            step={1}
+          />
+          <DatString path="upm" label="Units per Em" />
+          <DatNumber
+            path="xHeight"
+            label="X Height"
             min={0}
-            max={1}
-            step={0.001}
+            max={guiParams.upm}
+            step={1}
+          />
+          <DatNumber
+            path="capHeight"
+            label="Cap Height"
+            min={0}
+            max={guiParams.upm}
+            step={1}
+          />
+          <DatNumber
+            path="ascent"
+            label="Ascender"
+            min={0}
+            max={guiParams.upm}
+            step={1}
+          />
+          <DatNumber
+            path="descent"
+            label="Descender"
+            min={-guiParams.upm}
+            max={guiParams.upm}
+            step={1}
           />
           <DatButton onClick={() => reset()} label="Reset" />
         </DatGui>
