@@ -18,7 +18,7 @@ import Context from './Context';
 const defaultParams = {
   text: [
     {
-      text: 'Lorem ipsum adipisicing nulla',
+      text: 'LOREM IPSUM DOLOR SIT AMET',
       size: 56,
       measure: 15,
       leading: 2,
@@ -150,8 +150,6 @@ const App = () => {
   };
 
   const { text, screen } = params;
-
-  console.log(text);
 
   return !guiParams ? null : (
     <Context.Provider
