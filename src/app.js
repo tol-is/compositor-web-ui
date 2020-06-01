@@ -23,7 +23,7 @@ const defaultParams = {
       measure: 15,
       leading: 2,
       mt: 10,
-      mb: 2,
+      mb: 0,
     },
     {
       text:
@@ -31,8 +31,8 @@ const defaultParams = {
       size: 22,
       measure: 45,
       leading: 2,
-      mt: 2,
-      mb: 2,
+      mt: 0,
+      mb: 0,
     },
     {
       text:
@@ -40,8 +40,8 @@ const defaultParams = {
       size: 22,
       measure: 45,
       leading: 2,
-      mt: 2,
-      mb: 2,
+      mt: 0,
+      mb: 0,
     },
     {
       text: 'Lorem ipsum adipisicing nulla',
@@ -49,7 +49,7 @@ const defaultParams = {
       measure: 15,
       leading: 2,
       mt: 8,
-      mb: 2,
+      mb: 0,
     },
     {
       text:
@@ -57,8 +57,8 @@ const defaultParams = {
       size: 22,
       measure: 45,
       leading: 2,
-      mt: 2,
-      mb: 2,
+      mt: 0,
+      mb: 0,
     },
     {
       text:
@@ -67,7 +67,7 @@ const defaultParams = {
       measure: 35,
       leading: 2,
       mt: 8,
-      mb: 2,
+      mb: 0,
     },
     {
       text:
@@ -75,8 +75,8 @@ const defaultParams = {
       size: 22,
       measure: 45,
       leading: 2,
-      mt: 2,
-      mb: 2,
+      mt: 0,
+      mb: 0,
     },
   ],
   screen: 'config',
@@ -84,7 +84,7 @@ const defaultParams = {
   showGrid: true,
   debug: false,
   baseline: 8,
-  rhythm: 1,
+  rhythm: 4,
   upm: 1000,
   ascent: 978,
   descent: -258,
@@ -128,8 +128,8 @@ const App = () => {
       size: 22,
       measure: 45,
       leading: 2,
-      mt: 2,
-      mb: 2,
+      mt: 0,
+      mb: 0,
     });
 
     setParams({
