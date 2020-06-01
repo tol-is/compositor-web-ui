@@ -14,7 +14,7 @@ function getRandomColor() {
 }
 
 export default ({ onUpdate, ...props }) => {
-  const { debug } = useContext(Context);
+  const { debug, baseline } = useContext(Context);
 
   const bg = useMemo(() => getRandomColor(), []);
 
@@ -22,6 +22,8 @@ export default ({ onUpdate, ...props }) => {
     position: relative;
     display: inline-block;
     width: auto;
+    padding-top: ${props.mt * baseline}px;
+    padding-bottom: ${props.mb * baseline}px;
     ${debug &&
     `
     &:before {

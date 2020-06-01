@@ -71,10 +71,9 @@ export default () => {
   const useFont = ({ fontData, font }) => {
     if (!font) return;
 
-    console.log(font);
     setParams({
       ...restParams,
-      screen: screen,
+      screen: 'config',
       fontData: fontData,
       fontFamily: font.familyName,
       upm: font.unitsPerEm,
@@ -102,25 +101,27 @@ export default () => {
         z-index: 100;
         top: 0;
         width: 280px;
-
-        height: 57px;
+        height: 64px;
         background-color: #1a1a1a;
         & > .tabs {
           position: relative;
-          line-height: 28px;
-          height: 28px;
-          padding-left: 13px;
+          height: 32px;
+          line-height: 1;
           & > button {
+            &:focus {
+              outline: none;
+              background-color: #fd62ff;
+            }
             color: #eee;
             font-size: 12px;
             font-family: Lucida Grande, sans-serif;
             -webkit-font-smoothing: antialiased;
-            line-height: 28px;
-            padding: 0;
-            height: 28px;
+            line-height: 32px;
+            padding: 0 13px;
+            // height: 38px;
             background: none;
-            margin-right: 20px;
             &.selected {
+              background-color: #fd62ff;
               text-decoration: underline;
             }
           }
@@ -137,8 +138,8 @@ export default () => {
         & > .upload_button {
           position: relative;
           color: #eee;
-          line-height: 28px;
-          height: 28px;
+          line-height: 32px;
+          height: 32px;
           padding-left: 13px;
           font-size: 12px;
           font-family: Lucida Grande, sans-serif;

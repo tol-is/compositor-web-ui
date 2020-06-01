@@ -19,24 +19,72 @@ const defaultParams = {
   text: [
     {
       text: 'Lorem ipsum adipisicing nulla',
-      size: 96,
+      size: 56,
       measure: 15,
-      leading: 1,
+      leading: 2,
+      mt: 10,
+      mb: 2,
     },
     {
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
-      size: 32,
+      size: 22,
       measure: 45,
-      leading: 1,
+      leading: 2,
+      mt: 2,
+      mb: 2,
+    },
+    {
+      text:
+        'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
+      size: 22,
+      measure: 45,
+      leading: 2,
+      mt: 2,
+      mb: 2,
+    },
+    {
+      text: 'Lorem ipsum adipisicing nulla',
+      size: 42,
+      measure: 15,
+      leading: 2,
+      mt: 8,
+      mb: 2,
+    },
+    {
+      text:
+        'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
+      size: 22,
+      measure: 45,
+      leading: 2,
+      mt: 2,
+      mb: 2,
+    },
+    {
+      text:
+        'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt.',
+      size: 26,
+      measure: 35,
+      leading: 2,
+      mt: 8,
+      mb: 2,
+    },
+    {
+      text:
+        'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
+      size: 22,
+      measure: 45,
+      leading: 2,
+      mt: 2,
+      mb: 2,
     },
   ],
   screen: 'config',
   fontFamily: 'Averta PE',
   showGrid: true,
   debug: false,
-  baseline: 16,
-  rhythm: 4,
+  baseline: 8,
+  rhythm: 1,
   upm: 1000,
   ascent: 978,
   descent: -258,
@@ -64,25 +112,28 @@ const App = () => {
     });
 
   const removeNode = (idx) => {
-    const { text } = guiParams;
+    const { text, ...rest } = guiParams;
     text.splice(idx, 1);
     setParams({
-      ...params,
+      ...rest,
       text,
     });
   };
 
   const addNode = () => {
-    const { text } = guiParams;
+    const { text, ...rest } = params;
     text.push({
       text:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      size: 32,
-      leading: 3,
+        'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
+      size: 22,
+      measure: 45,
+      leading: 2,
+      mt: 2,
+      mb: 2,
     });
 
     setParams({
-      ...params,
+      ...rest,
       text,
     });
   };
@@ -98,7 +149,9 @@ const App = () => {
     setParams(defaultParams);
   };
 
-  const { screen } = params;
+  const { text, screen } = params;
+
+  console.log(text);
 
   return !guiParams ? null : (
     <Context.Provider
@@ -142,7 +195,7 @@ const App = () => {
         <DatGui
           data={guiParams}
           onUpdate={handleUpdate}
-          style={{ zIndex: 100, top: '57px' }}
+          style={{ zIndex: 100, top: '64px' }}
         >
           <DatString path="fontFamily" label="Font" />
           <DatNumber
@@ -194,7 +247,7 @@ const App = () => {
         <DatGui
           data={guiParams}
           onUpdate={handleUpdate}
-          style={{ zIndex: 100, top: '57px' }}
+          style={{ zIndex: 100, top: '64px' }}
         >
           <DatBoolean path="showGrid" label="Grid" />
           <DatBoolean path="debug" label="Debug" />
@@ -205,7 +258,7 @@ const App = () => {
             max={100}
             step={1}
           />
-          <DatNumber path="rhythm" label="Rhythm" min={0} max={24} step={1} />
+          <DatNumber path="rhythm" label="Rhythm" min={0} max={10} step={1} />
 
           {guiParams.text.map((t, idx) => (
             <DatFolder title={`Text ${idx}`}>
@@ -229,6 +282,20 @@ const App = () => {
                 label="Measure"
                 min={10}
                 max={65}
+                step={1}
+              />
+              <DatNumber
+                path={`text[${idx}].mt`}
+                label="Space Top"
+                min={0}
+                max={12}
+                step={1}
+              />
+              <DatNumber
+                path={`text[${idx}].mb`}
+                label="Space Bottom"
+                min={0}
+                max={12}
                 step={1}
               />
               <DatButton

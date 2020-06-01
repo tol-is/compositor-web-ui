@@ -18,23 +18,25 @@ export default () => {
     fontFamily,
   } = useContext(Context);
 
-  let container = css`
-    margin-right: 280px;
+  let config_container = css`
     margin-left: 6vw;
     margin-right: 6vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  `;
 
-    ${screen === 'preview' &&
-    `
+  let preview_container = css`
+    margin-right: 280px;
+    margin-left: 6vw;
     & > * + * {
       margin-top: ${baseline * rhythm}px;
     }
-    `}
   `;
 
   const showBg = showGrid && screen === 'preview';
 
   let grid = css`
-    padding: ${baseline * 8}px 0;
     min-height: 100vh;
     position: relative;
     background-repeat: repeat;
@@ -48,25 +50,21 @@ export default () => {
   return (
     <>
       <section className={grid}>
-        <div className={container}>
-          {screen === 'config' ? (
+        {screen === 'config' && (
+          <div className={config_container}>
             <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
               Compositor
             </TextMetrics>
-          ) : (
-            text.map(({ text, size, leading, measure }) => {
-              return (
-                <Text
-                  key={text}
-                  text={text}
-                  size={size}
-                  leading={leading}
-                  measure={measure}
-                />
-              );
-            })
-          )}
-        </div>
+          </div>
+        )}
+
+        {screen === 'preview' && (
+          <div className={preview_container}>
+            {text.map((p, i) => {
+              return <Text key={i} {...p} />;
+            })}
+          </div>
+        )}
       </section>
       {screen === 'config' ? (
         <footer
