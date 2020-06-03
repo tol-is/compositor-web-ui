@@ -36,8 +36,8 @@ export default () => {
   let preview_container = css`
     margin-right: 280px;
     margin-left: 6vw;
-    margin-top: ${baseline * 6}px;
-    margin-bottom: ${baseline * 6}px;
+    padding-top: ${baseline * 6}px;
+    padding-bottom: ${baseline * 6}px;
     & > * + * {
       margin-top: ${baseline * rhythm}px;
     }
@@ -84,9 +84,9 @@ export default () => {
                 <TextBaseline fontSize={20} leading={2} measure={55}>
                   Compositor is a baseline-grid typography system for the web.
                   Using vertical metrics, compositor trims the white-space above
-                  and below text elements, realigns the text to the baseline and
-                  implements space and size contraints that adhere to the
-                  baseline grid rhythm.
+                  and below text elements, realigns the glyphs to the baseline
+                  and implements space and size contraints that adhere to the
+                  grid rhythm.
                 </TextBaseline>
               </p>
               <ul
@@ -107,7 +107,8 @@ export default () => {
                     <TextBaseline fontSize={20} leading={2} measure={55}>
                       Font Size: Any font-size is allowed, but the bounding box
                       of any text element, is rounded to the nearest grid row,
-                      above the cap-height.
+                      above the cap-height. Adjust the cap-height if you want to
+                      account for
                     </TextBaseline>
                   </div>
                 </li>
