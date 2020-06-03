@@ -107,7 +107,7 @@ export default () => {
                     <TextBaseline fontSize={20} leading={2} measure={55}>
                       Font Size: Any font-size is allowed, but the bounding box
                       of any text element, is rounded to the nearest largest
-                      baseline row.
+                      grid row.
                     </TextBaseline>
                   </div>
                 </li>
