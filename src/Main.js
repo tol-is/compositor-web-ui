@@ -119,9 +119,10 @@ export default () => {
                     `}
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Leading: Unline traditional typography, leading does not
-                      describe the distance from baseline to baseline, but the
-                      space between lines of text, in baseline units.
+                      Leading: Unline traditional typography, in compositor,
+                      leading does not specify the distance from baseline to
+                      baseline, but the space between lines of text, in baseline
+                      units.
                     </TextBaseline>
                   </div>
                 </li>
