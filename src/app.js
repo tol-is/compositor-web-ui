@@ -28,7 +28,7 @@ const defaultParams = {
     {
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
-      size: 22,
+      size: 20,
       measure: 45,
       leading: 2,
       mt: 0,
@@ -37,7 +37,7 @@ const defaultParams = {
     {
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
-      size: 22,
+      size: 20,
       measure: 45,
       leading: 2,
       mt: 0,
@@ -54,7 +54,7 @@ const defaultParams = {
     {
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
-      size: 22,
+      size: 20,
       measure: 45,
       leading: 2,
       mt: 0,
@@ -72,7 +72,7 @@ const defaultParams = {
     {
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
-      size: 22,
+      size: 20,
       measure: 45,
       leading: 2,
       mt: 0,
@@ -125,7 +125,7 @@ const App = () => {
     text.push({
       text:
         'Officia ipsum adipisicing nulla aliquip enim in adipisicing ut sint voluptate sunt. Magna sint amet ullamco proident culpa eiusmod officia amet ea ea. Ullamco quis laboris labore et elit aliquip consectetur enim do sit amet cupidatat.',
-      size: 22,
+      size: 20,
       measure: 45,
       leading: 2,
       mt: 0,
