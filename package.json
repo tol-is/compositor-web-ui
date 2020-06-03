@@ -1,8 +1,8 @@
 {
-  "name": "baseline",
+  "name": "compositor-web-gui",
   "version": "1.0.0",
   "description": "",
-  "author": "Apostolos Christodoulou <me@tol.is>",
+	"author": "Apostolos Christodoulou <a7sc11u@gmail.com> (@a7sc11u)",
   "license": "MIT",
   "dependencies": {
     "@emotion/core": "^10.0.28",
