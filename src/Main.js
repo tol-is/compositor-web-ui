@@ -82,11 +82,11 @@ export default () => {
                 `}
               >
                 <TextBaseline fontSize={20} leading={2} measure={55}>
-                  Compositor is a baseline-grid typography system for the web.
-                  Using vertical metrics, compositor trims the white-space above
-                  and below text elements, realigns the glyphs to the baseline
-                  and implements space and size contraints that adhere to the
-                  grid rhythm.
+                  Compositor is a typographic system for the web. Using vertical
+                  metrics, compositor trims the white-space above and below text
+                  elements, realigns the glyphs to the baseline and implements
+                  space and size contraints that adhere to a baseline-grid
+                  rhythm.
                 </TextBaseline>
               </p>
               <ul
@@ -105,8 +105,8 @@ export default () => {
                     `}
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Font Size: Any font-size is allowed, but the bounding box
-                      of any text element, is rounded to the nearest grid row,
+                      Font Size: Any font-size is allowed. The bounding box of
+                      any text element, is rounded to the nearest grid row,
                       above the cap-height.
                     </TextBaseline>
                   </div>
