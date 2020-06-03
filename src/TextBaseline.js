@@ -54,7 +54,7 @@ export default ({ children, fontSize = 14, leading = 0, measure = 100 }) => {
   return (
     <span
       className={css`
-          display: inline-block;
+          display: block;
           vertical-align: bottom;
           position: relative;
           font-family: '${fontFamily}';

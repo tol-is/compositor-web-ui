@@ -26,9 +26,18 @@ export default () => {
     align-items: center;
   `;
 
+  let wtf_container = css`
+    margin-left: 6vw;
+    margin-right: 6vw;
+    display: flex;
+    flex-direction: column;
+  `;
+
   let preview_container = css`
     margin-right: 280px;
     margin-left: 6vw;
+    margin-top: ${baseline * 6}px;
+    margin-bottom: ${baseline * 6}px;
     & > * + * {
       margin-top: ${baseline * rhythm}px;
     }
@@ -51,11 +60,113 @@ export default () => {
     <>
       <section className={grid}>
         {screen === 'config' && (
-          <div className={config_container}>
-            <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
-              Compositor
-            </TextMetrics>
-          </div>
+          <>
+            <div className={config_container}>
+              <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
+                Compositor
+              </TextMetrics>
+            </div>
+            <div className={wtf_container}>
+              <h2
+                className={css`
+                  margin-top: 0;
+                  margin-bottom: ${baseline * 4}px;
+                `}
+              >
+                <TextBaseline fontSize={32}>Wtf</TextBaseline>
+              </h2>
+              <p
+                className={css`
+                  margin-top: 0;
+                  margin-bottom: ${baseline * 4}px;
+                `}
+              >
+                <TextBaseline fontSize={20} leading={2} measure={55}>
+                  Compositor is a baseline-grid typography system for the web.
+                  Using vertical metrics, compositor trims the white-space above
+                  and below text elements, realigns the text to the baseline and
+                  implements space and size contraints that adhere to the
+                  baseline grid rhythm.
+                </TextBaseline>
+              </p>
+              <ul
+                className={css`
+                  margin-top: 0;
+                  margin-bottom: ${baseline * 4}px;
+                  padding: 0;
+                  list-style-position: outside;
+                `}
+              >
+                <li>
+                  <div
+                    className={css`
+                      margin-bottom: ${baseline * 2}px;
+                      transform: translateY(-10px);
+                    `}
+                  >
+                    <TextBaseline fontSize={20} leading={2} measure={55}>
+                      Font Size: Any font-size is allowed, but the bounding box
+                      of any text element, is rounded to the nearest largest
+                      baseline row.
+                    </TextBaseline>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    className={css`
+                      margin-bottom: ${baseline * 2}px;
+                      transform: translateY(-10px);
+                    `}
+                  >
+                    <TextBaseline fontSize={20} leading={2} measure={55}>
+                      Leading: Unline traditional typography, leading does not
+                      describe the distance from baseline to baseline, but the
+                      space between lines of text, in baseline units.
+                    </TextBaseline>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    className={css`
+                      margin-bottom: ${baseline * 2}px;
+                      transform: translateY(-10px);
+                    `}
+                  >
+                    <TextBaseline fontSize={20} leading={2} measure={55}>
+                      Measure: The line width in `ch` units
+                    </TextBaseline>
+                  </div>
+                </li>
+                <li>
+                  <div
+                    className={css`
+                      transform: translateY(-10px);
+                    `}
+                  >
+                    <TextBaseline fontSize={20} leading={2} measure={55}>
+                      Rhythm: Constant container rhythm that applies to all
+                      directly nested layout elements.
+                    </TextBaseline>
+                  </div>
+                </li>
+              </ul>
+
+              <p
+                className={css`
+                  margin-top: 0;
+                  margin-bottom: ${baseline * 8}px;
+                `}
+              >
+                <TextBaseline fontSize={20} leading={2} measure={55}>
+                  The compositor algorithm is also available as an experimental
+                  implementation in{' '}
+                  <a href="https://github.com/a7sc11u/tailwind-compositor">
+                    tailwind-compositor
+                  </a>
+                </TextBaseline>
+              </p>
+            </div>
+          </>
         )}
 
         {screen === 'preview' && (
