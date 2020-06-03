@@ -106,8 +106,8 @@ export default () => {
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
                       Font Size: Any font-size is allowed, but the bounding box
-                      of any text element, is rounded to the nearest largest
-                      grid row.
+                      of any text element, is rounded to the nearest grid row,
+                      above the cap-height.
                     </TextBaseline>
                   </div>
                 </li>
