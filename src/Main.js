@@ -133,7 +133,8 @@ export default () => {
                     `}
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Measure: The line width in `ch` units
+                      Measure: The line-width in `ch` units. The size of '0'
+                      glyph
                     </TextBaseline>
                   </div>
                 </li>
