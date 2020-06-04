@@ -137,18 +137,6 @@ export default () => {
                     </TextBaseline>
                   </div>
                 </li>
-                <li>
-                  <div
-                    className={css`
-                      transform: translateY(-10px);
-                    `}
-                  >
-                    <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Rhythm: Constand container rhythm for all nested layout
-                      elements.
-                    </TextBaseline>
-                  </div>
-                </li>
               </ul>
 
               <p
