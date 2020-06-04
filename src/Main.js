@@ -85,7 +85,7 @@ export default () => {
                   Compositor is a typographic system for the web. Using vertical
                   metrics, compositor trims the white-space above and below text
                   elements, realigns the glyphs to the baseline and implements
-                  space and size contraints that adhere to a baseline-grid
+                  space and size constraints that adhere to a baseline-grid
                   rhythm.
                 </TextBaseline>
               </p>
@@ -105,9 +105,9 @@ export default () => {
                     `}
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Font Size: Any font-size is allowed. The bounding box of
-                      any text element, is rounded to the nearest grid row,
-                      above the cap-height.
+                      Font Size: Any font-size is allowed. The text's bounding
+                      box is rounded to the nearest grid row, above the
+                      cap-height.
                     </TextBaseline>
                   </div>
                 </li>
@@ -133,8 +133,7 @@ export default () => {
                     `}
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Measure: The line-width in `ch` units. The size of '0'
-                      glyph
+                      Measure: The line-width in `ch` units.
                     </TextBaseline>
                   </div>
                 </li>
@@ -145,8 +144,8 @@ export default () => {
                     `}
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Rhythm: Constant container rhythm that applies to all
-                      directly nested layout elements.
+                      Rhythm: Constand container rhythm for all nested layout
+                      elements.
                     </TextBaseline>
                   </div>
                 </li>
@@ -164,6 +163,7 @@ export default () => {
                   <a href="https://github.com/a7sc11u/tailwind-compositor">
                     tailwind-compositor
                   </a>
+                  . react version coming soon in raster-ui.
                 </TextBaseline>
               </p>
             </div>
