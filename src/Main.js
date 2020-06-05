@@ -120,8 +120,8 @@ export default () => {
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
                       Leading: In compositor, leading specifies the space
-                      between lines of text, unlike traditional typography,where
-                      it's baseline-to-baseline.
+                      between lines of text, unlike baseline-to-baseline in
+                      traditional typography.
                     </TextBaseline>
                   </div>
                 </li>
