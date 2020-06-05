@@ -119,9 +119,9 @@ export default () => {
                     `}
                   >
                     <TextBaseline fontSize={20} leading={2} measure={55}>
-                      Leading: Unlike traditional typography, in compositor,
-                      leading specifies the space between lines of text, rather
-                      than baseline-to-baseline.
+                      Leading: In compositor, leading specifies the space
+                      between lines of text, unlike traditional typography,where
+                      it's baseline-to-baseline.
                     </TextBaseline>
                   </div>
                 </li>
@@ -151,7 +151,7 @@ export default () => {
                   <a href="https://github.com/a7sc11u/tailwind-compositor">
                     tailwind-compositor
                   </a>
-                  . react version coming soon in raster-ui.
+                  . ReactJS version coming soon in raster-ui.
                 </TextBaseline>
               </p>
             </div>
