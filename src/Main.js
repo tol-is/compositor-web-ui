@@ -74,7 +74,7 @@ export default () => {
               >
                 <TextBaseline fontSize={20} leading={2} measure={55}>
                   Compositor is a typographic system for the web. Using vertical
-                  metrics, compositor trims the white-space above and below text
+                  metrics, compositor trims the line-gap above and below text
                   elements, realigns the glyphs to the baseline and implements
                   space and size constraints that adhere to a baseline-grid
                   rhythm.
