@@ -16,21 +16,19 @@ export default () => {
     lineHeight,
     fontSize,
     fontFamily,
+    setScreen,
   } = useContext(Context);
 
   let config_container = css`
-    margin-left: 6vw;
-    margin-right: 6vw;
     min-height: 100vh;
     display: flex;
     align-items: center;
   `;
 
   let wtf_container = css`
+    padding-top: 8vw;
     margin-left: 6vw;
     margin-right: 6vw;
-    display: flex;
-    flex-direction: column;
   `;
 
   let preview_container = css`
@@ -41,6 +39,12 @@ export default () => {
     & > * + * {
       margin-top: ${baseline * rhythm}px;
     }
+  `;
+
+  let preview_button = css`
+    display: block;
+    background: transparent;
+    padding: ${baseline * 1}px 0;
   `;
 
   const showBg = showGrid && screen === 'preview';
@@ -61,20 +65,7 @@ export default () => {
       <section className={grid}>
         {screen === 'config' && (
           <>
-            <div className={config_container}>
-              <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
-                Compositor
-              </TextMetrics>
-            </div>
             <div className={wtf_container}>
-              <h2
-                className={css`
-                  margin-top: 0;
-                  margin-bottom: ${baseline * 4}px;
-                `}
-              >
-                <TextBaseline fontSize={32}>Wtf</TextBaseline>
-              </h2>
               <p
                 className={css`
                   margin-top: 0;
@@ -138,6 +129,23 @@ export default () => {
                   </div>
                 </li>
               </ul>
+
+              <p>
+                <button
+                  onClick={() => setScreen('preview')}
+                  className={preview_button}
+                >
+                  <TextBaseline fontSize={20} leading={2} measure={55}>
+                    Go to the compose screen
+                  </TextBaseline>
+                </button>
+              </p>
+
+              <div className={config_container}>
+                <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
+                  Compositor
+                </TextMetrics>
+              </div>
 
               <p
                 className={css`

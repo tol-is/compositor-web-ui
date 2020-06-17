@@ -169,7 +169,7 @@ export default () => {
           type="button"
           onClick={() => setScreen('preview')}
         >
-          Preview
+          Compose
         </button>
       </div>
       <div className="upload_button" tabIndex={-1} aria-hidden={true}>

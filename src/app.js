@@ -111,6 +111,13 @@ const App = () => {
       ...newData,
     });
 
+  const setScreen = (screen) => {
+    setParams({
+      ...params,
+      screen: screen,
+    });
+  };
+
   const removeNode = (idx) => {
     const { text, ...rest } = guiParams;
     text.splice(idx, 1);
@@ -155,6 +162,7 @@ const App = () => {
     <Context.Provider
       value={{
         setParams: setParams,
+        setScreen: setScreen,
         ...guiParams,
       }}
     >
