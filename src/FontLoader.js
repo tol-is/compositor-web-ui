@@ -61,7 +61,6 @@ export default () => {
   const setScreen = (screen) => {
     setParams({
       ...restParams,
-      screen,
       fontFamily,
       fontData,
       screen: screen,

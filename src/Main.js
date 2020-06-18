@@ -16,7 +16,6 @@ export default () => {
     lineHeight,
     fontSize,
     fontFamily,
-    setScreen,
   } = useContext(Context);
 
   let config_container = css`
@@ -129,17 +128,6 @@ export default () => {
                   </div>
                 </li>
               </ul>
-
-              <p>
-                <button
-                  onClick={() => setScreen('preview')}
-                  className={preview_button}
-                >
-                  <TextBaseline fontSize={20} leading={2} measure={55}>
-                    Go to the compose screen
-                  </TextBaseline>
-                </button>
-              </p>
 
               <div className={config_container}>
                 <TextMetrics fontSize={fontSize} lineHeight={lineHeight}>
