@@ -20,37 +20,22 @@ export default ({ onUpdate, ...props }) => {
 
   const boxClassName = css`
     position: relative;
-    display: inline-block;
+    display: block;
     width: auto;
     padding-top: ${props.mt * baseline}px;
     padding-bottom: ${props.mb * baseline}px;
-    ${debug &&
-    `
-    &:before {
-      top: 0;
-      left: 0;
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: 10;
-      opacity: 0.45;
-      background-color: ${bg};
-    }
-    `}
+    ${debug && `background-color: ${bg};`}
   `;
 
   return (
-    <div>
-      <div className={boxClassName}>
-        <TextBaseline
-          fontSize={props.size}
-          leading={props.leading}
-          measure={props.measure}
-        >
-          {props.text}
-        </TextBaseline>
-      </div>
+    <div className={boxClassName}>
+      <TextBaseline
+        fontSize={props.size}
+        leading={props.leading}
+        measure={props.measure}
+      >
+        {props.text}
+      </TextBaseline>
     </div>
   );
 };
