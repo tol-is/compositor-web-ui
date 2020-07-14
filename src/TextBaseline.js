@@ -54,6 +54,7 @@ export default ({ children, fontSize = 14, leading = 0, measure = 100 }) => {
         font-size: ${fontSize}px;
         line-height: ${lineHeightRatio};
         padding: ${preventCollapseRatio}em 0;
+        max-width: ${measure}ch;
         &:before{
           content: '';
           display:block;
